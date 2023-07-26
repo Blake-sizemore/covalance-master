@@ -1,0 +1,28 @@
+Command Changed based on platforms and OS
+    Mac:
+    Windows:
+    Linux:
+
+Basic commands:
+    mkdir : make directory
+    code : lets you create a file
+        echo : similar but need to learn how to use
+            use : 
+    cd : lets you move locations in and around dir ( change directory)
+    .. - go back to parent ( up one folder )
+    . refer to current directory
+    ls : listing items in dir
+    pwd : print working dir ( show where you are)
+    mv : move (mv name1.txt ../folder-name) or rename ( mv name1.txt name2.txt)
+    cp : copy file ( cp copy1.txt copy2.text)
+    rm : remove ( perm. delete)
+        : rm -rf : deletes dir
+            -rf is a flag
+
+Chain commands:
+    ../ - to go back and than forward
+    ../.. - takes you even further back
+
+Path info:
+    absolute path: a fully defined path starting from th  ealist reasonable point
+    reliative path is defined from your current location

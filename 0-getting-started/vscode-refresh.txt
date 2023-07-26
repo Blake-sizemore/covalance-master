@@ -1,0 +1,80 @@
+VS code to Path:
+    Command Palette ( Shift+Command/ctrl+P)
+
+Adding VS Code to your PATH
+
+
+    It's likely that once you start using your command line more you'll want to be able to launch VS Code from it as well. We can accomplish this by adding VS Code to your PATH environment variable (your PATH is simply a set of locations your computer can use to search for valid commands - for the purpose of this course, you do not need to get caught up on what this is or how to change it).
+
+    Mac:
+
+        Open VS Code
+        Open the Command Palette (Shift+Command+P) and type shell command to find the Shell Command: Install 'code' command in PATH option and select it.
+        Restart any open command line prompts for the new PATH value to take effect. You'll be able to type code . in any folder to open VS Code in that folder.
+
+    Windows:
+    Note: The Windows installer should automatically add VS Code to your PATH, but if you end up trying to type the code command in your command prompt and Windows says that it is an unrecognized command please try the following:
+
+
+    Open VS Code
+    Open the Command Palette (Ctrl+Shift+P) and type shell command to find the Shell Command: Install 'code' command in PATH command and select that option. If the option is not available, it's very likely that everything is already setup correctly.
+    Restart any open command line prompts for the new PATH value to take effect. You'll be able to type code . in any folder to open VS Code in that folder
+
+Cmder: Windows 10 needs it to run commands
+    Terminal for windows
+        Andrew: Maybe have updates for 11 
+    Installation
+
+    Go to http://cmder.net/
+    Scroll down and choose the Download Full version button.
+    When the download is complete, unzip the folder.
+    Move the cmder folder to an place on your computer, remember where you put it
+    Open a Command Prompt as an Administrator
+        Hit the Win key and type "CMD"
+        Right-click on "Command Prompt" and click "Run as Administrator"
+    Navigate to the directory you have placed Cmder
+        Use cd <directory> to get to the folder
+        For example: if you have the Cmder.exe in C:\Cmder you would type cd C:\Cmder and press Enter
+    Execute this command: .\Cmder.exe /REGISTER ALL
+        If you get a message "Access Denied" ensure you are executing the command in an Administrator prompt.
+
+    In a file explorer window right click in or on a directory to see "Cmder Here" in the context menu. From this point forward you can do this any time you need to open a command prompt.
+
+    
+    Setting Cmder As Your VS Code Terminal (Optional)
+
+    NOTE that if you opened the integrated terminal in VS Code and saw:
+
+    Applying Cmder VSCode settings from 'C:/cmder\bin\vscode_init_args.cmd'...   
+    Applying Cmder VSCode settings is complete!
+
+    Then you are good to go! You can skip the step below as that is already done for you with newer versions of VS Code and Cmder. :)
+
+    By default VS Code's built-in terminal will use either CMD or Powershell. If you would like to override this to use Cmder as the built-in terminal, you can take the following steps (note that even using the built-in terminal within VS Code is entirely optional):
+
+        Locate the folder where your Cmder.exe exists
+        Open VS Code
+        Press Ctrl + , to access VS Code settings (or click File > Preferences > Settings)
+        Search for settings.json (or click the ... on the right-hand side of the window towards the top, choose "Open settings.json")
+        If VS Code opens the settings in the UI view (no JSON), there is a button to toggle this in the upper right hand corner of the active pane labeled Open Settings (JSON)
+        Append or modify the following into the JSON configuration file
+
+    "terminal.integrated.shell.windows": "cmd.exe",
+
+    "terminal.integrated.env.windows": {
+        "CMDER_ROOT": "<cmder-path>"
+    },
+    "terminal.integrated.shellArgs.windows": [
+        "/k",
+        "%CMDER_ROOT%\\vendor\\bin\\vscode_init.cmd"
+    ],
+
+    NOTE: replace <cmder-path> with the path to the directory that contains Cmder.exe, so if Cmder.exe was in C:\Cmder you would put C:\\Cmder in place of <cmder-path> (the reason for the double-slashes is because \ is an escape character in the JSON string)
+
+        Save the settings.json and then restart VS Code
+        From now on when you start the VS Code terminal it will open Cmder
+
+You can use VS Terminal instead, just be sure to set your path on a new install
+
+Extensions:
+    vscode-PDF - lets you view PDFs in VS

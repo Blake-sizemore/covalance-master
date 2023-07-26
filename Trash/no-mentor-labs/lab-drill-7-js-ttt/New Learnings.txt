@@ -1,0 +1,132 @@
+Iems learned:
+    JS
+        document - turns a varaible into documents content
+        querySelectorAll() - allows you to specifiy the information you want in the entire document
+        querySelector() - allows you get ONE type of element in the document
+        .addEventListner - creates an event varaible, ('name', function) string and function
+            event - it is a varaible created that you can use
+        .target - Where the event is taking place
+        .textContent - the area in the targeted html
+    CSS
+        :hover - while mouse is over use define "element":hover
+        :active - while clicking
+        :visisted - once clicked and registered in history
+
+
+Get get html row divs into javascript!
+
+    Use a variable to get them into js.
+        let cells = 
+    
+    define that we are pulling html doc into varaible
+        let cells = document
+    
+    define how much of that doc we want to reference using a function
+        let cells = document.querySelectorAll();
+            
+            More detail
+            .querySelectorAll() = pull all of someting
+            .querySelector() = pulls one of something
+
+    tell function where to look
+        let cells = document.querySelectorAll('row>div');
+            outputs a nodeList [array of html]
+
+            we can search directly form html and css, so classes and ids become useful
+                row > div class is applied to the following:
+                
+                    <div class="row">
+                        <div class="top left"></div>
+                        <div class="top middle"></div>
+                        <div class="top right"></div>
+                    </div>
+                    <div class="row">
+                        <div class="middle left"></div>
+                        <div class="middle"></div>
+                        <div class="middle right"></div>
+                    </div>
+                    <div class="row">
+                        <div class="bottom left"></div>
+                        <div class="bottom middle"></div>
+                        <div class="bottom right"></div>
+                    </div>
+
+                console.log(cells) see above
+    
+Select HTML form my javascript via the nodeList Array.
+    
+    How to add an X: you need to click it.
+        each cell (item in the cells array) needs to listen for an event click.
+    add an event listener to the cells in the array
+            we can only add an event listener to an indvidual 'cell
+            cell = nodeList [0:<div=class='top left'], 1:<div....,etc ]
+        
+        for loop is best for going through arrays
+            for (let i =0;i<cells.length;i++){
+                    console.log(cells[i])
+            } tester
+
+             for (let i =0;i<cells.length;i++){
+                    cells[i].addEventListener(argu1,argu2);
+            } 
+                argument 1 = a string "" of what type of event.
+                argument 2 = a function of what we want to happen
+
+            for (let i =0;i<cells.length;i++){
+                    cells[i].addEventListener('click',clickedCell);
+            } 
+    we need to build the clicked cell function with no arguments
+
+            function clickedCell () {
+                console.log(working)
+            }
+    
+    How does this work. ONCE you click a cell in that nodeList array 
+    the loop will hear it and run the clickedCell function. 
+        clickedCell returns a console.log of 'working' per click in the array
+
+
+    functions being attached an event listener will make an 'event'
+
+            function clickedCell () {
+                        console.log(event)
+                    }
+
+    Free event = Mouse event object this event shows where shows the target
+        click { target: div.top.left, 
+            buttons: 0, clientX: 177, clientY: 125, layerX: 177, layerY: 169 }
+        Currently event.target = what we clicked on "aka the html"
+
+            function clickedCell () {
+                        console.log(event.target)
+                    }
+    
+Now we have access to the clickedcells html and its properties
+    How do we add text? Use .textcContent
+            
+            function clickedCell () {
+                            console.log(event.target.textContent)
+                        }
+            This outputs the selected <div class="bottom right">CONTENT</div> 
+            and whats inbetween it
+
+    So event.target.textContent is the area between the div's, big deal.
+    ITS THE VARAIBLE FOR THAT SPOT IN THE HTML
+
+            function clickedCell () {
+                            event.target.textContent = 'x'
+                        }
+
+Hints and thinking for build a tic tac toe:
+1st task: make players take turn ( x/o alternate) - Done
+Define a win
+        tl,tm,tr
+        ml,mm,mr
+        br,bm,bl
+        tl,ml,br
+        tl,mm,bl
+        tm,mm,bm
+        tr,mr,bl
+        tr,mm,br
+
+clark howard 

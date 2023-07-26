@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    color: rgb(128, 128, 128);
+}
+
+h2, p, .readme-wrapper {
+    text-align: center; /*ta:*/
+}
+h1{
+    color: blue;
+}
+a { 
+    text-decoration: none; /*td:*/
+    color: red;
+    
+}
+
+a:hover { /*hover is auto applied to the a tag it appears to be a default action set, click, and visted*/
+    color:blueviolet; /* c: */
+    font-weight: bold; /* fw: */
+
+}
+
+.single-color {
+    color: darkcyan;
+    font-weight:bolder;
+}
+
+.boxes { /* m1em+p1em+w30em+bd:solid+bdrs: */
+    margin: 1em;
+    padding: 1em;
+    width: 15em; /* w */
+    border: solid rgb(161, 161, 161); /* bd: */
+    border-radius: 10px; /* bdrs:  */
+    display: block;
+}
+
+#box1 {
+    background-color: rgba(128, 255, 0, 0.176); /* bgc */
+}
+
+#box2 {
+    background-color: rgba(255, 204, 0, 0.084);
+
+}
+
+#box3 {
+    background-color: rgba(72, 0, 255, 0.225);
+}
+
+#box4 {
+    background-color: rgba(255, 0, 157, 0.13);
+}
+
+.image {
+    height:50px;
+    width:50px;
+    border-radius:50px;
+    background-color: azure;
+    position:relative;
+    left:.5em;
+    top:3em;
+}
+
+.additional{
+    color: aqua;
+
+}
+
+.original {
+color: bisque;
+}
+
+#one{color: rgb(165, 42, 42);}
+#two{color: rgba(165, 42, 42, 0.753);}
+#three{color:rgba(165, 42, 42, 0.532)}
+#four{color: rgba(165, 42, 42, 0.311);}
+#five{color: rgba(165, 42, 42, 0.133);}
+
+.edge{
+    border: 2px solid #000;
+}
+
+.star{
+    color: crimson;
+}
+
+#wars{
+    color: rgb(8, 174, 2);
+}

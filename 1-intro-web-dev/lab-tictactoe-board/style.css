@@ -1,0 +1,32 @@
+
+#board {
+    padding:3em;
+    margin:auto;
+    text-align:center;
+}
+.row>div{
+    float:left;
+    height:100px;
+    width:100px;
+}
+.row{
+    width:302px;
+    clear:both;
+    margin:inherit;
+}
+
+/* CSS edits from orginal prompt:
+top=t,center=c,bottom=b,left=l,middle=m,and right=r */
+.t,.b,.l,.r,.c,.z {
+    background-color:beige
+}
+
+.c{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.m{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}

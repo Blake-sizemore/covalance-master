@@ -1,0 +1,511 @@
+How the Web Works:
+    https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works 
+    Basics:  Client & Server
+        - Clients Request:
+            - any and all internet connected devices ( Wifi, ethernet, or mobile network)
+        - Servers Responed:
+            - computers that store web pages and share copies of those files to clients
+
+    Parts:
+        - internet connection: 
+            -Pretty simple its the road infomration travels through
+        - TCP/IP (Transmission Control Protocol / Internet Protocol):
+            - communication style that defines how infomration should travel the internet
+            - IP address: 4 sets of numbers (0-255) 0.0.0.0
+            - ping a web site in terminal: "ping google.com" to finds its IP
+        - DNS (Domain Name System):
+            - Address book for websites for where to http messages
+            - It finds the IP address based of of the Domain name ( IE google.com)
+        - Http ( hypertext transfer protocol):
+            - secure or not secure protocol for file transfer via websites
+            - https://devdocs.io/http/ 
+            - application layer: an abstraction layer that hides working sections, they are specified in IPS and OSI ( Same term for both different builds for each)
+            - client-server model: client opening a connection to make a request then wait for a response
+            - stateless protocol: server will not keep data(state) between two request
+        - Component Files ( code and asset):
+            - Code files: html, css, javascript
+            - Asset Files: video, images, pdfs, music files
+        - Packets:
+            - server to client direction
+            - small chucks of data, rather than whole files
+            - easy to fix items when errors occur
+            - can be sent using different routes for more people to download
+
+    Order Component files are parsed 
+        - Html first which leads to the links
+        - CSS and Javascript come in throught he links
+        - This creates a internal DOM from the HTML making a CSSOM and allowing javascript to run
+        - it becomes live and use able on screen
+    
+    Summary:
+        1. Search a domain name using an internet connected devices ( web browser )
+        2. internet devices then uses the DNS to find the IP address
+        3. DNS sends back the IP address to the web browser
+        4. browser than sends http request to the IP address web server
+        5. The server approves or denies the request.
+        6. web server than sends back all the web files (packets).
+
+    What is HTML https://developer.mozilla.org/en-US/docs/Web/HTML : <tag attr1="value" attr2="value"><nestedtag> </tag> 
+        Hyper text markup langauge:
+            - structure of a website: use "!" emmet build
+                - Doctype
+                    -
+                - html
+                    - lang
+                        - us en-US
+                - head
+                    - meta
+                        - charset
+                            - use "utf-8" to avoid problems 
+                        - name
+                            - viewport
+                        - content
+                            - "width=device-width"
+                    - title
+                    - link
+                        - rel
+                        - src
+                - body   
+        elements/nodes/tags https://developer.mozilla.org/en-US/docs/Web/HTML/Element :
+            - Most live in the body
+            - open tags and closed tag
+            Basics:
+                - img
+                - h1 - h6
+                - p
+                - ul & ol
+                - a href
+                - 
+        attributes
+            - meta data about the how tag is displayed
+            - can instruction the browser how to act
+        nesting elements ( html heirarchy )
+            - tags in tags
+
+    What is CSS https://developer.mozilla.org/en-US/docs/Learn/CSS:
+        - Cascading style sheet:
+            - visual representation rules for html
+            - https://devdocs.io/css/ 
+        - Rule set:
+            - combo of selector and properties with vaules
+                - selectors:
+                    - what html to select and edit
+                - properties with values:
+                    - attributes and there settings
+
+    What is Javascript https://developer.mozilla.org/en-US/docs/Learn/JavaScript:
+        - Programming Langauge (code)
+        - Provides Interactive
+        - Logical Operations
+        - Mathematical
+        - key to eveything
+
+HTML: Common Questions: https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto
+    - Tips
+        - Use emmet "!" to build super basic HTML structure
+        - add CSS link in head
+        - add JS script into bottom of body  ( best pratice)
+        - Use ctrl - / for fast comment
+    
+    - Structure: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started
+             - Doctype
+                    -
+                - html
+                    - lang
+                        - us en-US
+                - head
+                    - meta
+                        - charset
+                            - use "utf-8" to avoid problems 
+                        - name
+                            - viewport
+                        - content
+                            - "width=device-width"
+                    - title
+                    - Fav Link
+                    - CSS link
+                        - rel
+                        - src
+                - body
+                    - Content
+                    - JS script 
+    - Sectioning: https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure
+        - all these go in body, all are the same thing but with different name
+            -header
+                -nav
+            -Main
+                -article
+                -section
+                    -div
+                -aside
+            -Footer
+    - Type
+        - h1- h6
+            - hierarchy of text
+            - default style for each web browser is different
+        - p:basic paragraphs
+        - span: Inline element selector
+        - ol: order by number
+            - li: list items
+        - ul: bullet points
+            - li: list items
+        - a: anchor tag
+            - href
+            - target
+                - blank: leads to another tab 
+        Research    
+            HTML elements:https://devdocs.io/html/element
+            Block-level elements:https://devdocs.io/html/block-level_elements
+            Inline elements: https://devdocs.io/html/inline_elements
+    - Forms: <form action=""> USER input
+        - input
+            -type
+                -email
+                -number
+                -tel
+                -checkbox
+                -radio
+                    -same name = one selection between mutiply radios
+                    -different name = own group
+            -placeholder
+            -name=unquie descriptions
+        - button:
+            - type="submit"
+        - textarea:
+            - id
+            - cols: use CSS width and height
+            - rows
+            - name
+        - select: dropdown
+            - name
+            - id
+                option value="1"
+        Research:
+            https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form
+            https://developer.mozilla.org/en-US/docs/Learn/Forms
+    - Media
+        - video:
+            -video
+                -src:
+                -controls - no attr
+                -autoplay - no attr
+                -embbed - iframe
+        - audio:
+            -src
+            -autoplay
+            -control 
+        - img:
+            -src
+            -alt
+    Final Thoughts:
+    f12 - dev tools to research 
+
+CSS: selector{ property:value;}
+    selectors: needs to call as an attr in html
+        elements: 
+            selector{ property:value;}
+            directly effects html tags
+        
+        classes (.)
+            CSS = .test{}
+            HTML = <h1 class="test"></h1>
+            can be used for multiply tags
+        
+        ID (#)
+            #test{property:value;}
+            <h1 id="test"></h1>
+            only used for ONE thing
+
+        attributes []
+            [for="email"] {}
+            similar to ID but aims at attr
+
+        multiply selector ruleset
+            tag1, tag2, .class3 { property:value }
+            same property change to many tags
+
+        Links:
+            Intro: https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS
+            How CSS works: https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/How_CSS_works
+            Syntax and Index: https://devdocs.io/css/
+
+    Color
+        color:
+            - color:red = font color
+            - background-color, background, 
+
+        How to define color:
+            - hexidecimal color: #000000
+            - RGB: 000,000,000
+            - RGBA: 000,000,000, 1 -.0
+
+    Layout/Display: 
+        Display: Common factor
+            Outer Display VS Inner Dispay
+            Are they one there own line or on the same line
+            
+            inline (outer)
+                each item is placed on the same line and not stacked like blocks
+                does not respect height or width properties
+                Items set to inline by defult:
+                    <a> (Anchor or link element)
+                    <b> ("Bring attention to" element)
+                    <br> (Line break)
+                    <button> (Button)
+                    <code> (Inline code)
+                    <em> (Emphasis)
+                    <i> (Specifies text that is set off from the normal text, like an icon)
+                    <img> (Image)
+                    <input> (User input)
+                    <label> (A form element label)
+                    <select> (Select box)
+                    <span> (Generic inline text container)
+                    <strong> (Strong importance element)
+                    <textarea> (Larger area for user text input)
+                    <time> (Represents a period in time)
+
+            block (outer)
+                Take up the whole block (width)
+                think log in demo: with out CSS login info appears on its own line, once it is changed to display block each item gets stack.
+                Items set to block default:
+                    <address> (Contact information)
+                    <article> (Article content)
+                    <aside> (Aside content)
+                    <blockquote> (Long "block" quotation)
+                    <div> (A document division)
+                    <footer> (Section or page footer)
+                    <h1>, <h2>, <h3>, <h4>, <h5>, <h6> (Heading elements)
+                    <header> (Groups header information)
+                    <hr> (Horizontal rule)
+                    <li> (List item)
+                    <main> (A section containing the central content for a document)
+                    <nav> (A section containing navigation links)
+                    <ol> (Ordered list)
+                    <p> (Paragraph)
+                    <pre> (Preformatted text)
+                    <section> (A section of a page)
+                    <ul> (Unordered list)
+                    <video> (Video player)
+
+            none (outer)
+                this will set items to be hidden, but still in the html
+                use for Javascript
+
+            inline-block (outer):
+                it respects the height and width properties of the CSS setting
+                changes the container based on
+
+            flex (inner): 
+                elements behave like block in a flex box  model
+
+            All display property values:
+                /* <display-outside> values */
+                    display: block;
+                    display: inline;
+                    display: run-in;
+
+                /* <display-inside> values */
+                    display: flow;
+                    display: flow-root;
+                    display: table;
+                    display: flex;
+                    display: grid;
+                    display: ruby;
+                    display: subgrid;
+
+                /* <display-outside> plus <display-inside> values */
+                    display: block flow;
+                    display: inline table;
+                    display: flex run-in;
+
+                /* <display-listitem> values */
+                    display: list-item;
+                    display: list-item block;
+                    display: list-item inline;
+                    display: list-item flow;
+                    display: list-item flow-root;
+                    display: list-item block flow;
+                    display: list-item block flow-root;
+                    display: flow list-item block;
+
+                /* <display-internal> values */
+                    display: table-row-group;
+                    display: table-header-group;
+                    display: table-footer-group;
+                    display: table-row;
+                    display: table-cell;
+                    display: table-column-group;
+                    display: table-column;
+                    display: table-caption;
+                    display: ruby-base;
+                    display: ruby-text;
+                    display: ruby-base-container;
+                    display: ruby-text-container;
+
+                /* <display-box> values */
+                    display: contents;
+                    display: none;
+
+                /* <display-legacy> values */
+                    display: inline-block;
+                    display: inline-table;
+                    display: inline-flex;
+                    display: inline-grid;
+
+                /* Global values */
+                    display: inherit;
+                    display: initial;
+                    display: unset;
+
+    Positioning:
+
+        Default flow: block
+            gen pos: bottom, top, left, right
+
+        static:
+            does NOT allow bottom, top, left, right
+
+        relative: 
+            allows bottom, top, left, right to effect items
+            realigns via orginal parented position
+            Does not effect elements around it
+            
+        absolute: 
+            element is removed from flow and made its own flow inside of parent container
+            trick: use negitive number to  push outside of container
+            
+        fixed
+            viewport becomes container and does not move with other content
+            NAV BAR
+            
+        float: not used as much today
+            collapses the container and creates break in flow. 
+            left - pushes to the left of the parent 
+            right - pushes to the right of the parent container
+        clear - respects the static flow of the document for float errors
+
+        Links:
+            intro: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction
+            positioning: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning
+            float: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats
+            practical: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Practical_positioning_examples
+
+    Sizing
+        Em and Rem: use as default
+            Em
+                Similar to percent, use whole number  
+                scale based to parents size
+                1em = 100%, 2em = 200%
+                direct element
+            
+            Rems
+                scales based of the Root font size (top of the tree)
+                root element
+        
+        viewport units: based of of the viewport as your 100%, and will ignore the margins
+            vh (viewport height)
+                50vh = 50% of viewport
+            vw (viewport width)
+                50vw = 50% of viewport
+
+        DO NOT USE
+            Pixels
+                width & height no scale
+
+            Percentage
+                % of containers defined text size, default size is 16pt
+        
+        Links: https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units 
+
+    Spacing
+         
+        Box-sizing: Use these to control defined areas 
+            content-box: sets content size
+            border-box: sets overall size of border,padding and pushes in the content
+
+         Margin: Space between elements
+            auto: centers elements
+            1 auto = Horizontal centered
+            auto 1 = vertical centered
+            pattern: top,right,bottom,left
+                shortcut: margin:1; = 1,1,1,1
+                shortcut: margin:1 2; = 1,2,1,2
+                shortcut: margin: 1 2 3; = 1,2,3,2
+
+        Boarder: Border thickness 
+            style
+            color
+            auto
+            top,bottom,left,right
+
+        Padding: moves border away from content
+            auto
+            top,bottom,left, right
+
+            link:
+
+        main content: text, image, video,
+
+        Letter-spacing
+        
+        word-spacing
+    
+        Border: 1 dashed red;
+            CSS Matic.com
+            width
+            border-radius:
+            style
+            color
+            box shadow: 1 1 1 1 #000000;
+                x-offset
+                y-offset
+                blur radius
+                spread radius
+                color
+            hr: use like border
+
+            link:
+                https://devdocs.io/css/css_backgrounds_and_borders
+                https://devdocs.io/css/border
+                https://devdocs.io/css/box-shadow
+            
+        Background
+            asset : url('image.jpeg')
+            link  : url('https://image.com/image')
+            position:
+                center, right, top, bottom
+                can combine, top right, bottom left, etc, etc
+            repeat: no-repeat
+            
+        Typography: rendered font should be small and designers push back on due to mobile.
+            
+            font-family: 'Lato', san-serif;
+                you can use a CSS link from google style sheet
+                google fonts provides a CSS link via codpy paste coding
+                <link:https:/www.googlefonts.com
+                @fontface
+            
+            font-size:
+                ems
+                rems
+            
+            font-weight: 400 is regualy
+            
+            color: 
+
+            text-decoration
+                underline
+                strike through
+                none
+                overline
+            
+            text-align
+                left
+                center
+                right
+                justified
+
+            Links: 
+                Font properties: https://devdocs.io/css/font
+                font: https://devdocs.io/css-fonts/
+

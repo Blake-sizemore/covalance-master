@@ -1,0 +1,53 @@
+document = refs to an entire document
+    function = querySelectorAll = finds all tags in a document an  its linked documents ( html - css)
+        ('') = will auto search most possible tags in a html doc. You can also add your own from th  css
+
+New functions:
+querySelectorAll = grabs all tags in a doc and makes them accessible to js.
+addEventlistener = two argument (1st = a string for the type of event, 2nd = function to run when event happens)
+NOTE: functions auto create a variable called click, when associated with addEventListner.
+NOTE: the event is an object with ALOT of info. Use Target for now ( target: div.tag.class).
+
+html property/class:
+.textcontent = the text that is inside of html
+
+How to assign content:
+use '=' to assign .textContent to the clicked div. event.target.textContent='x'
+
+Hint:
+    Toggle a player/turn = use if else 
+    cells[0].textcontent = whats in that cell upon click.
+    use this to see if the current build can call you if you won a single box
+    use '===' comparision 
+    use && = and
+    use || = or
+
+Define parts of the game
+We need to find our borad and establish its areas.
+
+    We need to reset a board once the game has been won/draw
+
+    We need to be able to leave a mark based off turn
+        p1 leaves X's and p2 leaves O's
+        Use click counter to track turns
+        Out but text in h2 header to inform whats happening
+
+    Check to see if a win has happend
+        The soonest a win can happen is after 5 clicks
+        Check for a win each time after the 5th click
+        The last chance a win can happen is at click 9
+
+    Push game results to players:
+        Once a game is finished, win or draw we need to know ( use win check to find out)
+        Results: X's win, O's win, and Draw
+        
+    Define wins by cells:
+        0,1,2
+        0,3,6
+        0,4,8
+        1,4,7
+        2,5,8
+        3,4,5
+        6,7,8
+        2,4,6
+

@@ -1,0 +1,53 @@
+
+Install Git:
+    Registering for a GitHub account
+
+        We're going to head over to https://github.com/ and register for a free account! Which, as a heads up, there's several websites this course will have you make accounts for, so we recommend using a password manager if you don't already. Fill out your profile, and that's really about it! We're one step closer to practicing some source control.
+    
+    Installing git
+
+        git is a tool that allows developers to manage their code. When you use git, you create a history of all the changes you make to your code which is really powerful especially when you work on a project with others or you need to go back and see what your code previously looked like.
+
+        Now, let's install git from https://git-scm.com/downloads. Git will by default recommend a version for your computer.
+    
+    For Windows
+
+        On Windows, clicking the Download button under the Latest source Release should automatically start downloading the executable. Run the installer, follow the prompts given to you (and the default options should be fine, ask us in Discord if anything isn't clear!), and you'll be good to go.
+        For Mac
+
+        Follow the link or go to https://brew.sh/ and take a look at the directions for installing Homebrew. It should be as simple as opening up a terminal window and pasting the following (be sure to grab the one from the site as this may be updated periodically)
+
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+        After Homebrew is finished installing, you should now be able to run the command
+
+    brew install git
+
+        Note: If for some reason, the brew command is not recognized, please try closing the terminal and reopening a new one. Also you shouldn't need to use sudo but if there is a permissions problem you can try running sudo brew install git instead.
+        
+    Checking the git install
+
+    Once you've installed git, you can use it from the command-line. If you don't know what the command-line is, this part is going to take a minute to get used to, and you might want to watch the optional videos on the command-line.
+
+    To use git, you need to open Cmder (Windows) or terminal (Mac). Once you're in, you can type git --version and press enter. You should see a message explaining the usage of git at this point, but you shouldn't see a message that git does not exist as a command. If you do, you may need to try and install git again or reach out to us in Discord for help.
+
+git commands:
+    
+    
+    First Push for git:    
+        git init 
+        git add . 
+        git commit -m "" 
+        git remote add origin URL from git
+        git push -u origin master
+
+    Following Pushes
+        git add .
+        git commit -m ""
+        git push
+
+    Other Git items
+        git pull - 
+        git cat -
+        git clone -
+

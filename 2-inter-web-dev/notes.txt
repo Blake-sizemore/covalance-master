@@ -1,0 +1,91 @@
+Intermediate Web dev notes notes:
+FlexBox
+
+    flex box and how to use
+        display: flex
+            default direction of flex is row
+            defualt wrap is none
+            !! use shorthand for speed
+        flex-direction:
+            flex-direction: row, row reverse, column, column reverse
+        flex-wrap:
+            no-wrap, wrap, and reverse wrap
+        !! Shorthand
+        flex-flow:
+            row wrap, reverse-row no wrap
+                this is both flex-wrap and flex-direction in any combo.
+
+    Direction axes
+        there are two directional axes.
+            Main axis and Cross Axis
+            row - main goes left to right while cross goes down
+            column - main goes down while cross goes left to right
+
+    justify-content: left and right adjustment
+        Grouping
+            flex-end
+            flex-start
+            center
+        Spacing
+            space-evenly
+            space-around
+            space-between
+
+    align-items: top to bottom
+        flex-start
+        flex-end
+        center
+        stretch
+        DO NOT THINK OF THE EDGES - Other langauges will change the main and cross directions
+        Think english reading versus japanese
+
+    Order:
+        set on flex childern
+        determines the order 
+        The lower the number the closer it will be to start of the main axis
+        Use: nth-of-type(x) { order: y}
+            nth-of-type(1) { order: 3} = the third child will appear first
+            nth-of-type(2) { order: 1} = the second child will appear second
+            etc; 
+    !! Shorthand
+    flex: 1
+        flex-grow - do not use
+        flex-shrink - do not use
+        flex-basis - do not use
+        use to show size change and proportion
+        use positive number to set porportion
+        set class to childern
+        the numbers create a proportional grid that adjust based on "flex units"
+
+    Align self
+        applies directly to the element it is on
+        mimics the align features of the align items
+        this also overwrites the high up functions
+
+Bootstrap
+    it is a framework
+    twitter made bootstrap
+    they made it browsersafe
+    Important to read the documents
+    this framework is a CSS/JS frame work
+
+    Breakpoints:
+        xs <576px 	
+        sm ≥576px 
+        md ≥768px 	
+        lg ≥992px 	
+        xl ≥1200px 	
+        xxl ≥1400px
+    Basic struture for row and column builds
+        .container
+            .row
+                .col
+        This build makes a equal distro
+    Changing column widths directly
+        use col-(2-11) as flexunits(fu) inside of row
+        if one col is set the others adjust
+        using breakpoints will also provide flexibility
+    Variable width
+        .col-lg-2
+        .col-md-auto
+        .col-lg-2

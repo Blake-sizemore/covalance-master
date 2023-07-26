@@ -1,0 +1,1034 @@
+MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators
+MSFT:https://docs.microsoft.com/en-us/scripting/javascript/operators-javascript
+    https://docs.microsoft.com/en-us/scripting/javascript/reference/javascript-operators
+MDN: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code
+Learn JS: https://www.learn-js.org/en/Loops
+
+JavaScript Variables And Data Types
+
+    A variable is a value that can change based on a condition or information passed to a program. 
+    You can think of a program as a set of instructions that tell a computer what to do. 
+    In almost every program, data is used while the program is running. 
+    Data can be constants (fixed values that do not change) or variable (changeable) values.
+
+    Data Types: Weakly v Strongly
+        A data type defines the values that a variable can hold, and the operations that can be performed on it.   
+        Weakly vs Strongly typed data:
+            "strongly" typed languages once a variable is set to a specific type it cannot be changed, provide more type safety, a variable will always be a certain type. 
+            "weakly" typed languages allow for a lot of flexibility. there are some common data types.
+
+    Primiative data types: 
+        null: a defined non-value
+            null means that a variable is defined and is set to the value null
+        integer: a number
+        boolean: a true or false value
+        character: a single character
+        floating-point number: a number with a decimal point
+        string: a group of characters (i.e. a word or multiple words)
+        undefined: indicates that a variable is not defined
+            different from null in that undefined means a variable is not defined.
+
+    Complex data types: Array, Objects, function
+        Array: a high-level, list-like object that contains values and has a length 
+            let myArr = [1, 2, 3];
+
+        Object: The root level of any variable in JavaScript, defines a value that can have properties
+            let myObj = { foo: 1, bar: 2 };
+
+        Function: Objects that can be invoked and perform some computation. Often they have what's known as arguments passed in, and they can even return values.
+
+            // Function declaration
+            function multiply(arg1, arg2) {
+                return arg1 * arg2;
+            }
+
+            // Function usage
+            let result = multiply(2, 4);
+
+JavaScript Objects and Arrays
+
+    Array Details: 
+        In programming there is a concept of a data type. 
+        A data type defines the values that a variable can hold, and the operations that can be performed on it. 
+        JavaScript is very flexible in terms of data types, people call it a "weakly" or "loosely" typed language. 
+        What this means is that even though a variable may start as one type, it can be changed to another type at a later time. 
+        In "strongly" typed languages once a variable is set to a specific type it cannot be changed. 
+        "Strongly" typed languages provide more type safety, meaning you can assume that a variable will always be a certain type in a "strongly" typed language. 
+        However, "weakly" typed languages allow for a lot of flexibility.
+        Data Sets
+
+        Consider you have a collection of numbers: 2, 4, 6, 8, and 10. You need a way to represent this collection in memory (where a computer stores information). You could potentially store the numbers in a string "2 4 6 8 10", but that would make it really difficult to access the numbers and perform operations with them. If you wanted to sum the numbers in the collection, you would end up having to split the string with a space and then extract each number and add them.
+
+        JavaScript provides a data type that makes it very easy to interact with collections known as an Array. Arrays are written as a list of values between square brackets. The representation of the collection above would look like this in JavaScript:
+
+        let list = [2, 4, 6, 7, 10];
+
+        It is important to note that list is just the name we chose to store the array into, you could use any value for that variable. Now that we have the list, JavaScript provides a mechanism for accessing the items in the list. You use square brackets to access a value in an array by its index. The term index is used to represent the numbered position of a value in an array. Consider the following code:
+
+        let list = [2, 4, 6, 7, 10];
+
+        // Logs 6 to the console
+        console.log(list[2]);
+
+        The code above will define our array of numbers, store it in a variable called "list" and then log the value at index "2" to the console. The comment mentions that it would log "6", and you may be thinking that the value at position "2" is 4. The reason "6" is logged is because arrays in JavaScript and many (but not all) other languages is "zero-indexed". This means that the first item in an array can be found at index 0. So the following code will log "2" to the console:
+
+        let list = [2, 4, 6, 7, 10];
+
+        // Logs 2 to the console
+        console.log(list[0]);
+
+        You can think of the index as the amount of items to skip when starting at the first item in an array. It is also possible to put some logic in between the square brackets when accessing array values. Consider the following code:
+
+        let list = [2, 4, 6, 7, 10];
+        let index = 2;
+        let a = 5;
+        let b = -3;
+
+        // Logs 6 to the console
+        console.log(list[2]);
+
+        // Logs 6 to the console
+        console.log(list[1 + 1]);
+
+        // Logs 6 to the console
+        console.log(list[index]);
+
+        // Logs 6 to the console
+        console.log(list[a + b]);
+
+        All of the console.log statements above will result in the same thing being logged to the console.
+        Properties
+
+        Up to this point you have probably been using a couple properties without actually knowing what they are and how they exist. For example, if you have a string and want to log it's length you could write code like the following:
+
+        let greeting = 'Hello World';
+
+        // Logs 11 to the console
+        console.log(greeting.length);
+
+        The .length on the end of greeting is calling to access the length property that exists on all strings. Almost every single JavaScript data type has properties. The exceptions to that rules are null and undefined. Trying to access properties off of those values will result in errors.
+
+        In JavaScript you can access properties of an object in two different ways: with a dot and with square brackets. The following code will accomplish the same thing:
+
+        let greeting = 'Hello World';
+        let property = 'length';
+
+        // Logs 11 to the console
+        console.log(greeting.length);
+
+        // Logs 11 to the console
+        console.log(greeting['length']);
+
+        // Logs 11 to the console
+        console.log(greeting[property]);
+
+        It is highly recommended that you use dot notation when you know the property you are looking for. The bracket notation is a little more verbose, and should be reserved for when you need to access a dynamic property using a variable like in the greeting[property] example above.
+        Methods
+
+        Strings and Arrays both contain a length property. In addition to that they both contain properties that are functions. These are called methods.
+
+        let greeting = 'Hello World';
+
+        // Logs "function" to the console
+        console.log(typeof greeting.toUpperCase);
+
+        // Logs "HELLO WORLD" to the console
+        console.log(greeting.toUpperCase());
+
+        All strings contain the same methods, and you can read more about them on MDN. Now take a closer look at the code above. greeting.toUpperCase() calls the toUpperCase method on all Strings, and without any arguments it is able to return HELLO WORLD. Properties that contain functions are called methods for this purpose, they have access to the value to which they belong. This will be explained in depth further on in this course. For now, know that when someone says "call the [y] method on x" they are in fact saying that "x" has a property on it called "y" and it is a function.
+
+        Arrays in JavaScript have some very useful methods for manipulating data. The following code shows you just a couple of methods on arrays:
+
+        let list = [2, 4, 6, 7, 10];
+
+        console.log(list);
+        // -> [2, 4, 6, 7, 10]
+
+        list.push(3);
+
+        console.log(list);
+        // -> [2, 4, 6, 7, 10, 3];
+
+        console.log(list.pop());
+        // -> 3
+
+        console.log(list);
+        // -> [2, 4, 6, 7, 10]
+
+        list.unshift(3);
+
+        console.log(list);
+        // -> [3, 2, 4, 6, 7, 10]
+
+        console.log(list.shift());
+        // -> 3
+
+        console.log(list);
+        // -> [2, 4, 6, 7, 10]
+
+        console.log(list.concat([3, 4]));
+        // -> [2, 4, 6, 7, 10, 3, 4]
+
+        console.log(list);
+        // -> [2, 4, 6, 7, 10]
+
+        list = list.concat([3, 4]);
+
+        console.log(list);
+        // -> [2, 4, 6, 7, 10, 3, 4]
+
+            The push method adds values to the end of an array
+            The pop method removes the last value in an array and returns it
+            The unshift method adds values to the beginning of an array
+            The shift method removes the first value in an array and returns it
+            The concat method combines two arrays together and returns a new array (not changing either array)
+
+        The names of the methods may be confusing/seem not intuitive. However, they are based on programming operations for stacks and queues. A stack is a common programming data structure that allows you to push and pop values in a Last In First Out (LIFO) pattern. A queue is a structure that uses a First In First Out (FIFO) pattern.
+
+        For more information on Array methods see the documentation on MDN.
+        Objects
+
+    Object Details:
+        Now you have a decent amount of experience with Strings and Arrays in JavaScript. 
+        However, what if you need to represent a set of arbitrary data. 
+        Say for example you have a blog post. 
+        The posts consists of a title, category, body, and a list of tags. 
+        It would be awfully difficult to represent a post using any of the data types you currently know. 
+        This is where objects come in. Objects are arbitary collections of properties. 
+        Representing the post as an object is fairly simple:
+
+        let post = {
+            title: 'Welcome To My Blog',
+            category: 'Announcements',
+            body: 'Hello and welcome to my blog. I will be posting about my adventures as a developer',
+            tags: ['JS', 'CSS', 'HTML']
+        };
+
+        console.log(post.title);
+        // -> 'Welcome To My Blog'
+
+        console.log(post.tags[1]);
+        // -> 'CSS'
+
+        The above code organizes the post into a logical collection of properties. 
+        Note that it is possible to nest objects as properties of other objects, etc. 
+        In the above vode tags is an Array as a property on post. 
+        The notation used above is called "object literal" notation. 
+        You will see further in this course that there is more than one way to create an object in JavaScript. 
+        Object literal notation starts with braces:
+
+        let myObject = null;
+
+        Inside the braces there is a collection of properties separated by commas. Each property has a name followed by a colon and a value.
+
+        let myObject = {
+            propA: 'value a',
+            propB: 'value b'
+            'prop c': 'value c'
+        };
+
+        Notice above 'prop c' is a property on myObject, but it is not a valid binding name/number so it must be surrounded by quotes. It is common to write object properties on new lines, and indent them for better readability.
+
+        Up to this point you have understood braces null to mean the start of a block of statements. Now we are introducing a new functionality in that they describe objects. While it may seem a little weird right now, in practice it's fairly easy to deal with both functionalities.
+
+        You don't always have to define all the properties of an object up front, sometimes it can be useful to assign them later. You do this with an =, similar to how you declare and assign a variable:
+
+        let person = {
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        console.log(person.email);
+        // -> undefined
+
+        person.email = 'john.doe@gmail.com';
+        console.log(person.email);
+        // -> 'john.doe@gmail.com'
+
+        Sometimes it can be useful to get all the properties that exist on an object, you can do this with Object.keys:
+
+        let person = {
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        console.log(Object.keys(person));
+        // -> ['firstName', 'lastName']
+
+        There is also an Object.assign function that copies all properties from one object into another:
+
+        let person = {
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        console.log(Object.assign(person, {
+            firstName: 'Jane',
+            email: 'jane.doe@gmail.com'
+        }));
+        // -> { firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@gmail.com' }
+
+        This isn't the only way to change properties on an object, you can update an object's properties with the = operator:
+
+        let person = {
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        person.firstName = 'Jane';
+
+        console.log(person);
+        // -> { firstName: 'Jane', lastName: 'Doe' }
+
+        Now that you know what Objects are, it is not a stretch to understand that Arrays are just a special kind of object used for storing sequences of things. 
+        In fact, Strings are also special types of objects used to store sequences of characters. 
+        So in a way Strings are like Arrays.
+
+    Object Mutability
+
+        You have observed up to this point that values in an object can be modified. Prior to now you have been dealing mostly with objects that cannot be modified, such as numbers and strings. Those are called "immutable" objects. It is not possible to change 1 to 2. Yes you can do let x = 1; x = 2, but that doesn't change 1 to 2, it simply changes x to 2. Objects are different. You can change the properties on an object, causing it to have different content at different times. Consider the following code:
+
+        let a = {
+            value: 10
+        };
+
+        let b = a;
+        let c = {
+            value: 10
+        };
+
+        console.log(a == b);
+        // -> true
+        console.log(a === b);
+        // -> true
+        console.log(a == c);
+        // -> false
+        console.log(a === c);
+        // -> false
+
+        a.value = 15;
+
+        console.log(a.value);
+        // -> 15
+        console.log(b.value);
+        // -> 15
+        console.log(c.value);
+        // -> 10
+
+        a = {
+            value: 10
+        };
+
+        console.log(a.value);
+        // -> 10
+        console.log(b.value);
+        // -> 15
+        console.log(c.value);
+        // -> 10
+
+        In the above example a and b are the same object, so changing a results in a change to b as well. However setting a to a new object disconnects it from the object that is assigned to b.
+
+Defining Variables In JavaScript
+
+    In almost every program you will want to define variables. 
+    In JavaScript as well as other languages variables must be defined before they are used. 
+    The normal flow of a file in a program is top to bottom, so normally defined before use means that the variable definition appears above the variable usage. 
+    
+    Consider the following code:
+
+    // Variable definition
+    var num = 2;
+
+    // Variable usage
+    console.log(num);
+
+    In the code above the variable num is defined, and it is assigned a value of 2 (an integer). It is then passed into a "function" called console.log as an argument. Since JavaScript is a weakly typed language, you do not need to explicitly declare num as an integer. In other strongly typed languages you may see num explicitly defined as a type, for example in C# (another common language) you might see the following:
+
+    // Variable definition
+    int num = 2;
+
+    // Variable usage
+    Console.Write(num);
+
+    The code above would accomplish the same thing as the JavaScript code, but in C#. In the JavaScript code above, the var keyword is used to define the variable num. This is an older keyword that people don't normally use in modern JavaScript programs. There are three different keywords you can use:
+
+        var: declares a variable, optionally initializing it to a value
+
+    var x = 1;
+
+    if (x === 1) {
+        var x = 2;
+
+        // expected output: 2
+        console.log(x);
+    }
+
+    // expected output: 2
+    console.log(x);
+
+    let: declares a block-scoped local variable, optionally initializing it to a value
+
+        let x = 1;
+
+        if (x === 1) {
+            let x = 2;
+
+            // expected output: 2
+            console.log(x);
+        }
+
+        // expected output: 1
+        console.log(x);
+
+    const: declares a block-scoped local variable. The value is constant and cannot be re-assigned or redeclared
+
+        const number = 42;
+
+        try {
+            number = 99;
+        } catch (err) {
+            // expected output: TypeError: invalid assignment to const `number'
+            // Note - error messages will vary depending on browser
+            console.log(err);
+        }
+
+        // expected output: 42
+        console.log(number);
+
+        It is recommended that you use const and let rather than var for safety reasons. If you notice in the code above for let and var, let variables are nearly identical to var variables with one additional functionality. A let variable exhibits what is called "block-scope." You will learn more about what that means later, but notice above that in the let block x is re-assigned to 2 inside an "if block," but remains as 1 outside the block.
+        Naming Conventions
+
+    JavaScript has naming conventions for variables, which loosely define what you should name variables. In general, you want to be descriptive about what your variable represent. For example:
+
+        // bad
+        let str = 2;
+
+        // good
+        let num = 2;
+
+        In addition to naming variables descriptively, you use lowercase and uppercase letters for different types of variables. In general JavaScript uses what's called "camelCase" for most variables. In "camelCase" the first letter of the variable name is lowercase, and then all subsequent words in the variable start with an uppercase letter. There are some data types in JavaScript that should be "CapitalCase," which you will learn about later. Often times when people are using constants they use "UPPER_SNAKE_CASE."
+
+JavaScript Operators
+
+        JavaScript operators are used to assign values, compare values, perform arithmetic operations, and more. Many you may know already like addition +, subtraction -, multiplication *, and division /.
+
+    JavaScript Expressions
+
+        A JavaScript expression contains both operators and operands. It can be considered any valid unit of code that resolves to a value.
+
+            operand - what operators are applied to. For instance in the expression 8 * 3 there are two operands. The left operand is the 8 and the right operand is the 3. Operands can also be referred to as arguments.
+            operator - the verb of the expression that denotes what we're doing to the operands. JavaScript has the following types of operators:
+                assignment operators
+                comparison operators
+                arithmetic operators
+                bitwise operators
+                logical operators
+                string operators
+                conditional (or ternary) operators
+                comma operator
+                unary operator
+                relational operators
+        unary expression - requires a single operand, either before or after the operator: operator operand
+
+        ++x;
+
+        or: operand operator
+
+        x++;
+
+            binary expression - requires two operands: operand1 operator operand2
+
+        3 + 4;
+        6 * y;
+
+            ternary expression - only JavaScript operator that creates a ternary expression is the conditional operator with the syntax: condition ? val1 : val2. If condition is true, the operator has the value of val1, otherwise it has the value of val2.
+
+        (age >= 21) ? 'alcoholic' : 'non-alcoholic';
+
+    Assignment Operators
+
+        An assignment operator assigns a value to its left operand based on the value of its right operand. The simple assignment operator is =
+
+        x = y;
+
+        There are also compound assignment operators like the following examples:
+
+        x += y;
+        x -= y;
+
+        Which essentially translate to
+
+        x = x + y;
+        x = x - y;
+
+        Destructuring
+
+        For complex assignments you can use destructuring to extract data from arrays or objects using a syntax that mirrors the construction of array or object literals.
+
+        let foo = ['one', 'two', 'three'];
+
+        // without destructuring
+        let one = foo[0];
+        let two = foo[1];
+        let three = foo[2];
+
+        // with destructuring
+        let [one, two, three] = foo;
+
+    Comparison Operators
+
+        A comparison operator compares its operands and returns a logical value (true or false) based on whether the comparison is true.
+        Name	Operator	Description	True statements
+        Equal	==	Returns true if the operands are equal	4 == '4'
+        Not Equal	!=	Returns true if the operands are not equal	4 != '3'
+        Strict Equal	===	Returns true if the operands are equal of the same type	let x = 4; x === 4;
+        Strict Not Equal	!==	Returns true if the operands are of the same type but not equal, or are a different type	3 !== '3'
+        Greater than	>	Returns true if the left operand is greater than the right operand	14 > 2
+        Greater than or Equal	>=	Returns true if the left operand is greater than or equal to the right operand	14 >= '14'
+        Less than	<	Returns true if the left operand is less than the right operand	2 < 14
+        Less than or Equal	<=	Returns true if the left operand is less than or equal to the right operand	14 <= '14'
+
+    Arithmetic Operators
+
+        An arithmetic operator takes numerical values (either literals or variables) as their operands and returns a single numerical value.
+        Name	Operator	Description	Example
+        Remainder	%	Binary operator that returns the integer remainder of dividing the two operands	10 % 3 returns 1
+        Increment	++	Unary operator that adds one to its operand and returns the pre or post value depending on the operator placement	if y is 4, ++y sets y to 5 and returns 5, whereas y++ returns 4 and then sets y to 5
+        Decrement	--	Unary operator that subtracts one from its operand and returns the pre or post value depending on the operator placement	if y is 4, --y sets y to 3 and returns 3, whereas y-- returns 4 and then sets y to 3
+        Unary Negation	-	Unary operator that returns the negation of its operand	if y is 4, -y returns -4
+        Unary Plus	+	Unary operator that attempts to convert the operand to a number if it is not already	+'4' returns 4, +true returns 1, +-4 returns -4
+     
+    Bitwise Operators
+
+        Bitwise operators treat their operands as a set of 32 bits (zeros and ones), rather than as decimal, hexadecimal, or octal numbers. For example, the decimal 9 has a binary representation of 1001. Bitwise operators perform their operations on such binary representations, but they return standard JavaScript numerical values.
+        Name	Operator	Description	Example
+        Bitwise AND	&	Binary operator that returns a one in each bit position for which the corresponding bits of both operands are ones	10 & 3 returns 2
+        Bitwise OR	|	Binary operator that returns a zero in each bit position for which the corresponding bits of both operands are zeros	10 | 3 returns 11
+        Bitwise XOR	^	Binary operator that returns a zero in each bit position for which the corresponding bits are the same and a one in each bit position for which the corresponding bits are different	10 ^ 3 returns 9
+        Bitwise NOT	~	Unary operator that inverts the bits of its operand	~10 returns -11
+        Left Shift	<<	Binary operator that shifts the left operand in binary representation the right operand bits to the left, shifting in zeros from the right	10 << 3 returns 80
+        Sign-propagating Right Shift	>>	Binary operator that shifts the left operand in binary representation the right operand bits to the right, discarding bits shifted off	10 >> 3 returns 1
+        Zero-fill Right Shift	>>>	Binary operator that shifts the left operand in binary representation the right operand bits to the right, discarding bits shifted off, and shifting in zeros from the left	10 >>> 3 returns 1
+     
+    Logical Operators
+
+        Logical operators are typically used with Boolean (logical) values; when they are, they return a Boolean value. 
+        However, the && and || operators actually return the value of one of the specified operands, so if these operators are used with non-Boolean values, they may return a non-Boolean value.
+        Name	Operator	Description	Example
+        Logical AND	&&	Binary operator that returns the left operand if it can be converted to false; otherwise, returns the right operand. Thus, when used with Boolean values, returns true if both operands are true; otherwise, returns false	true && false returns false
+        Logical OR	||	Binary operator that returns the left operand if it can be converted to true; otherwise, returns the right operand. Thus, when used with Boolean values, returns true if either operand is true; if both are false, returns false	true || false returns true
+        Logical NOT	!	Unary operator that returns false if it's a single operand that can be converted to true; otherwise, returns true	!true returns false, !0 returns true
+     
+    String Operators
+
+        The + operator (along with the += compound operator) can also be used as a concatenation operator when dealing with strings.
+
+        console.log('alpha' + 'bet'); // logs the string 'alphabet' to the console
+
+    Other Unary Operators
+
+        delete
+
+            The delete operator deletes an object, an object's property, or an element at a specified index in an array
+
+            delete objectName;
+            delete objectName.property;
+            delete objectName[index];
+
+        typeof
+
+            The typeof operator returns a string indicating the type of the unevaluated operand with the syntax typeof operand. operand is the string, variable, keyword, or object for which the type is to be returned.
+
+            let shape = 'round';
+            let size = 1;
+            let foo = ['Apple', 'Mango', 'Orange'];
+
+            typeof shape;       // returns "string"
+            typeof size;        // returns "number"
+            typeof foo;         // returns "object"
+
+        void
+            The void operator specifies an expression to be evaluated without returning a value with the syntax void expression. 
+            Expression is a JavaScript expression to evaluate.
+
+            <a href="javascript:void(0)">Click here to do nothing</a>
+
+    Relational Operators
+
+        in
+
+        The in operator returns true if the specified property is in the specified object.
+
+        let trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+        3 in trees;        // returns true
+        6 in trees;        // returns false
+        'length' in trees; // returns true (length is an Array property)
+
+        'PI' in Math;        // returns true
+
+        let mycar = { make: 'Honda', model: 'Accord', year: 1998 };
+        'make' in mycar;  // returns true
+
+    instanceof
+
+        The instanceof operator returns true if the specified object is of the specified object type.
+
+        let theDay = new Date(2018, 1, 1);
+
+        theDay instanceof Date;      // returns true
+     
+    Operator Precedence
+
+    The precedence of operators determines the order they are applied when evaluating an expression. You can override operator precedence by using parentheses.
+
+    The following table describes the precedence of operators, from highest to lowest:
+    Operator Type	Operators
+    member	. []
+    call/create instance	() new
+    negation/increment	! ~ - + ++ -- typeof void delete
+    multiply/divide	* / %
+    addition/subtraction	+ -
+    bitwise shift	<< >> >>>
+    relational	< <= > >= in instanceof
+    equality	== != === !==
+    bitwise-and	&
+    bitwise-or	|
+    logical-and	&&
+    logical-or	||
+    conditional	?:
+    assignment	= += -= *= /= %= <<= >>= >>>= &= ^=	=
+    comma	,
+
+JavaScript Conditional Statements
+
+    Very often when we write code, we want to perform different actions for different decisions. We can use conditional statements to accomplish this.
+
+     
+    if... else Statements
+
+        if... else statements are the most common type of conditional statement. They're seen in many different coding languages, and follow the following syntax.
+
+        if (condition) {
+            // code to run if condition is true
+        } else {
+            // code to run if condition is not true
+        }
+
+        It can help to think about a statement as the following pseudo-code: "if the condition returns true, run code A, else run code B"
+
+        It's important to note that the else statement is optional like in the following statement:
+
+        if (condition) {
+            // code to run if condition is true
+        }
+
+        // run other code
+
+        However, you need to be careful here. In this case, the second block of code is not involved at all with the conditional statement, so it will always run, regardless of whether the condition returns true or false. This is not necessarily a bad thing, but it might not be what you want — often you will want to run one block of code or the other, not both.
+     
+    else if
+
+        if... else statements provide us with two potential outcomes, but what if we need more? else if allows us to have any many potential outcomes as we may need. Consider the following example:
+
+        if (userChoice === 'pizza') {
+            console.log('$1.50');
+        } else if (userChoice === 'hamburger') {
+            console.log('$2.50');
+        } else if (userChoice === 'taco') {
+            console.log('$2.00');
+        } else {
+            console.log('Please select an option');
+        }
+
+        It's important to remember that any value that is not false, undefined, null, 0, NaN, or an empty string ('') actually returns true when tested as a conditional statement, therefore you can simply use a variable name on its own to test whether it is true, or even that it exists, or not undefined.
+
+    Nesting
+
+    It's perfectly ok, and fairly common, to nest if... else statements inside one another.
+
+    if (userChoice === 'pizza') {
+        if (userWallet >= 150) {
+            console.log('Success!');
+        } else {
+            console.log('Doh!');
+        }
+    }
+
+Using Logical Operators
+
+Logical operators can be used to test multiple conditions for if... else statements and potentially eliminate the need for nesting in some cases.
+
+    if (userChoice === 'pizza' && userWallet >= 150) {
+        console.log('Successfully ordered pizza!');
+    } else if (userChoice === 'hamburger' && userWallet >= 250) {
+        console.log('Successfully ordered a hamburger!');
+    } else if (userChoice === 'taco' && userWallet >= 200) {
+        console.log('Successfully ordered a taco!');
+    } else {
+        console.log('Please select an option you can afford');
+    }
+
+    A common mistake when using logical operators is to forget to restate the variable for the binary expression. The following shows the right way and the wrong way to compare userWallet to several values.
+
+    if (userWallet === 150 || 200 || 250) { // WRONG!
+        // run my code
+    }
+
+    if (userWallet === 150 || userWallet === 200 || userWallet === 250) { // RIGHT!
+        // run my code
+    }
+
+    The first way is a valid conditional statement, but will likely produce undesired results. It will always run the code because both 200 and 250 will be evaluated as true making the statement execute.
+
+switch Statements
+
+    if...else statements are mainly good for cases where you've got a couple of choices, and each one requires a reasonable amount of code to be run, and/or the conditions are complex (e.g. multiple logical operators). switch statements, on the other hand, are ideal for when you have a large number of choices. They take a single expression/value as an input, and then look through a number of choices until they find one that matches that value, executing the corresponding code that goes along with it.
+
+    The syntax is as follows:
+
+    switch (expression) {
+    case choice1:
+        // run this code
+        break;
+
+    case choice2:
+        // run this code instead
+        break;
+
+    // include as many cases as you like
+
+    default:
+        // actually, just run this code since none of my choices matched expression
+    }
+
+    It's important to note that the default choice is optional and you can safely omit it if there is no chance that the expression could end up equaling an unknown value or if you don't want to run any code in the default case.
+
+    switch (userChoice) {
+        case 'pizza':
+            console.log('$1.50');
+            break;
+        case 'spaghetti':
+            console.log('$5.50');
+            break;
+        case 'lasagna':
+            console.log('$8.50');
+            break;
+        case 'hamburger':
+            console.log('$2.50');
+            break;
+        case 'cheeseburger':
+            console.log('$3.00');
+            break;
+        case 'chicken tenders':
+            console.log('$3.50');
+            break;
+        case 'taco':
+            console.log('$2.00');
+            break;
+        case 'burrito':
+            console.log('$4.00');
+            break;
+        default:
+            console.log('Please select an option');
+
+    }
+
+    The break keyword tells the code to break out of the switch statement. If the break if left out, the code that follows will continue to execute (e.g. - if userChoice is equal to 'pizza' but the break is omitted, both '$1.50' and '$5.50' will be logged to the console).
+
+Ternary Operator
+
+    For very simple cases, a ternary operator can be used for conditional cases. It uses the following syntax:
+
+    ( condition ) ? 'run this code' : 'run this code instead'
+
+    Where if condition is true it will 'run this code', otherwise it will 'run this code instead'.
+
+    An example can be seen below:
+
+    let greeting = ( isBirthday ) ? 'Happy birthday ' + userName : 'Good morning ' + userName;
+
+    It's important to note that ternary expression is completely optional. An if... else statement can always be used instead and in a lot of times can be far less confusing.
+
+JavaScript Loops
+
+    Loops offer a quick and easy way to do something repeatedly. There are many different kinds of loops, but they all essentially do the same thing... they repeat an action some number of times (and it's actually possible that number could be zero). The various loop mechanisms offer different ways to determine the start and end points of the loop. There are various situations that are more easily served by one type of loop over the others.
+
+     
+    while loop
+
+        A while loop executes its block of code as long as a specified condition evaluates to true.
+
+        while (condition) {
+            // execute this code
+        }
+
+        If the condition becomes false at any time, the code within the loop stops executing and control passes to the statement following the loop. The test of the condition occurs before the code is executed, so if the initial condition is false, the code inside never executes.
+
+        e.g.
+
+        let n = 0;
+        let x = 0;
+
+        while (n < 3) {
+            n++;
+            x += n;
+        }
+
+        *It's important to note that while loops can potentially become infinite if your logic does not allow for the loop to ever end
+
+        e.g.
+
+        let n = 0;
+        let x = 0;
+
+        while (n < x + 1) {
+            n++;
+            x += n;
+        }
+
+        The flaw in the logic makes it so that n will never become greater than or equal to x.
+
+    for loop
+
+        A for loop can be thought of as a combination of a while loop with an initialization expression (that runs once prior to the loop condition ever being evaluated) as well as an increment expression (that runs every time after the loop body runs). The loop uses the following syntax:
+
+        for ([initializationExpression]; [condition]; [incrementExpression]) {
+            // execute this code
+        }
+
+        An example for loop can be found below:
+
+        let total = 10;
+
+        for (let i = 0; i < total; ++i) {
+            // execute code "total" times
+        }
+
+        You can think of the statement as the following. We initialize i as 0 once. Then while i is less than total we want to execute the code in braces. After the code executes, we want to run the increment expression and increment i by 1. Essentially, for loops are a simpler syntax for writing while loops. For instance, you could rewrite the above loop with a while loop and achieve the exact same thing, there would just be slightly more code involved.
+
+        let i = 0;
+        let total = 10;
+
+        while (i < total) {
+            // execute code "total" times
+            ++i;
+        }
+
+    do...while loop
+
+        A do...while loop is similar to a while loop in that it executes a block of code while a specified condition is true; however, it swaps the order of evaluation and runs the code first and checks the condition after. It uses the following syntax:
+
+        do {
+            // execute this code
+        } while (condition);
+
+        An example of a do...while loop can be seen below:
+
+        let i = 0;
+        let amount = 10;
+        let sleep = '';
+
+        do {
+            sleep += 'Z';
+        } while (i++ < amount);
+
+            The major difference in this case between a while loop and a do...while loop is that if amount had been 0 for instance, a while loop would have never executed and sleep would have been an empty string ''. However, using a do...while loop ensures that the code will at least be executed once, and sleep will have the value 'Z' even if amount is 0.
+
+    for...in loop
+
+        The for...in statement iterates a specified variable over all the enumerable properties of an object. For each distinct property, JavaScript executes the specified statements. It uses the following syntax:
+
+        for (variable in object) {
+            // execute this code
+        }
+
+        An example for...in loop could be the following:
+
+        let car = {
+            make: 'Acura',
+            model: 'TL'
+        };
+
+        for (let i in car) {
+            console.log(i); // would print 'make' in 1st loop and 'model' in 2nd
+            console.log(car[i]); // would print 'Acura' in 1st loop and 'TL' in 2nd
+        }
+
+        for...in loops can technically be used to interate through Arrays; however, traditional for loops are recommended since a for...in loop will iterate over user-defined properties in addition to the array indexes.
+
+    for...of loop
+
+    The for...of statement creates a loop Iterating over iterable objects (including Array, Map, Set, arguments object and so on), invoking a custom iteration hook with statements to be executed for the value of each distinct property. It uses the following syntax:
+
+    for (variable of object) {
+        // execute this code
+    }
+
+    It's similar to the for...in loop, except where the for...in loop iterates over property names, the for...of loop iterates over iterable property values. The following illustrates the difference between the two loops.
+
+    let arr = [10, 11, 12];
+
+    arr.foo = 'bar';
+
+    for (let i in arr) {
+        console.log(i); // logs '0', '1', '2', 'foo'
+    }
+
+    for (let i of arr) {
+        console.log(i); // logs 10, 11, 12
+    }
+
+break statement
+
+    Use the break statement to terminate a loop, switch, or in conjunction with a labeled statement. The syntax is as follows:
+
+    break;
+    // or
+    break labelName; // if used with a labeled statement
+
+    The following is an example of using the break statement:
+
+    let names = ['Teddy', 'John', 'Mike', 'George']; // we can imagine this was initialized elsewhere
+
+    for (let i = 0; i < names.length; ++i) {
+        if (names[i] === 'John') {
+            console.log('We found John!'); // and we DONT want to continue searching through the array
+            break;
+        }
+    }
+
+continue statement
+
+    The continue statement can be used to restart a while, do...while, for, or labeled statement. The syntax is as follows:
+
+    continue;
+    // or
+    continue labelName; // if used with a labeled statement
+
+    The following is an example of using the continue statement:
+
+    let names = ['Teddy', 'John', 'Mike', 'George']; // we can imagine this was initialized elsewhere
+
+    for (let i = 0; i < names.length; ++i) {
+        if (names[i] === 'John') {
+            console.log('We found John!'); // and we DO want to continue searching through the array
+            continue;
+        }
+    }
+
+labeled statement
+
+A label provides a statement with an identifier that lets you refer to it elsewhere in your program. You can create a label with the following syntax:
+
+labelName:
+    // code to execute
+
+The value of label may be any JavaScript identifier that is not a reserved word.
+
+The following is an example of labeling a while loop:
+
+markedWhile:
+    while (someCondition === true) {
+        // execute some code
+    }
+
+It's fairly uncommon as it's not generally necessary to label blocks of code. There are limited use cases where it can be useful though (especially when nesting loops in other loops). For example, the following is an example where it could be useful:
+
+let i;
+let j;
+
+loop1:
+    for (i = 0; i < 3; i++) {      //The first for statement is labeled "loop1"
+        loop2:
+            for (j = 0; j < 3; j++) {   //The second for statement is labeled "loop2"
+                if (i === 1 && j === 1) {
+                    continue loop1;
+                }
+
+                console.log('i = ' + i + ', j = ' + j);
+            }
+    }
+
+// Output is:
+//   "i = 0, j = 0"
+//   "i = 0, j = 1"
+//   "i = 0, j = 2"
+//   "i = 1, j = 0"
+//   "i = 2, j = 0"
+//   "i = 2, j = 1"
+//   "i = 2, j = 2"
+// Notice how it skips both "i = 1, j = 1" and "i = 1, j = 2"
+
+or using a break statement:
+
+let i;
+let j;
+
+loop1:
+    for (i = 0; i < 3; i++) {      //The first for statement is labeled "loop1"
+        loop2:
+            for (j = 0; j < 3; j++) {   //The second for statement is labeled "loop2"
+                if (i === 1 && j === 1) {
+                    break loop1;
+                }
+
+                console.log('i = ' + i + ', j = ' + j);
+            }
+    }
+
+// Output is:
+//   "i = 0, j = 0"
+//   "i = 0, j = 1"
+//   "i = 0, j = 2"
+//   "i = 1, j = 0"
+// Notice the difference with the previous continue example
+
+
+JavaScript Functions
+
+A function is essentially a body of code that can be run by other, external code (or internal in the case of recursion). It is a sequence of statements that can potentially have values passed into it for its use and can optionally return a value. In JavaScript, functions are first-class objects, because they can have properties and methods just like any other object. What distinguishes them from other objects is that functions can be called. In brief, they are Function objects.
+ 
+Defining Functions
+
+    To declare a function, you must use the following syntax:
+
+    function functionName([param1[, param2[, ... paramN]]]) {
+    // function body
+    }
+
+    In the above code, functionName is where you declare the name of the function. [param1[, param2[, ... paramN]]] is a common syntax for defining parameters to a function. When you declare a function you won't include the brackets [], they exist to indicate that parameters are optional, and you can have any number of them*. When you are looking at documentation online you will see this same syntax used in many places, so keep it in mind.
+
+    *A function can have up to 255 parameters although it's probably best to keep the number of input parameters as small as you can.
+
+    For example you can define a function called showError to alert an error.
+
+    function showError() {
+        // do something to show an error
+    }
+
+    or with a parameter:
+
+    function showErrorMsg(msg) {
+        // do something to show the error message passed in
+    }
+
+Calling Functions
+
+    Defining a function does not execute it. Defining the function simply names the function and specifies what to do when the function is called. Calling the function actually performs the specified actions with the indicated parameters.
+
+    For example, to call the showError and showErrorMsg functions defined above you would call them by doing the following:
+
+    showError();
+    showErrorMsg('Something went wrong');
+
+Returning Values
+
+    JavaScript Functions can optionally return a value to be used elsewhere in your code.
+
+    function square(x) {
+        return x * x;
+    }
+
+    In this function, we take in x as an argument, and return the value of x * x. Now when we call the function square we can expect it to return a value based on the input we pass in.
+
+    let threeSquared = square(3); // threeSquared will now be equal to 9

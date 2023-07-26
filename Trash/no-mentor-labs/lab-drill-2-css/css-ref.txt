@@ -1,0 +1,494 @@
+CSS ref:
+
+CSS Display and Layout
+There are many different techniques for using CSS to layout a page. HTML has a normal/default flow position for every element on the page. You can use CSS to take HTML elements and control where they are positioned relative to their normal flow position. The display property is used to specify the type of rendering box for an element.
+Below is a list of all the different display property values:
+/* <display-outside> values */
+display: block;
+display: inline;
+display: run-in;
+
+/* <display-inside> values */
+display: flow;
+display: flow-root;
+display: table;
+display: flex;
+display: grid;
+display: ruby;
+display: subgrid;
+
+/* <display-outside> plus <display-inside> values */
+display: block flow;
+display: inline table;
+display: flex run-in;
+
+/* <display-listitem> values */
+display: list-item;
+display: list-item block;
+display: list-item inline;
+display: list-item flow;
+display: list-item flow-root;
+display: list-item block flow;
+display: list-item block flow-root;
+display: flow list-item block;
+
+/* <display-internal> values */
+display: table-row-group;
+display: table-header-group;
+display: table-footer-group;
+display: table-row;
+display: table-cell;
+display: table-column-group;
+display: table-column;
+display: table-caption;
+display: ruby-base;
+display: ruby-text;
+display: ruby-base-container;
+display: ruby-text-container;
+
+/* <display-box> values */
+display: contents;
+display: none;
+
+/* <display-legacy> values */
+display: inline-block;
+display: inline-table;
+display: inline-flex;
+display: inline-grid;
+
+/* Global values */
+display: inherit;
+display: initial;
+display: unset;
+The most common display values are block, inline, flex, and none. We will cover them here.
+display: block
+The block value for display specifies an element's outer display type, denoting that the element generates a block box. What this means is that the element will start on a new line, and it will take up the entire width of its container. The following HTML elements are set to display: block by default, meaning they always start on a new line and take up the full width available.
+	•	<address> (Contact information)
+	•	<article> (Article content)
+	•	<aside> (Aside content)
+	•	<blockquote> (Long "block" quotation)
+	•	<div> (A document division)
+	•	<footer> (Section or page footer)
+	•	<h1>, <h2>, <h3>, <h4>, <h5>, <h6> (Heading elements)
+	•	<header> (Groups header information)
+	•	<hr> (Horizontal rule)
+	•	<li> (List item)
+	•	<main> (A section containing the central content for a document)
+	•	<nav> (A section containing navigation links)
+	•	<ol> (Ordered list)
+	•	<p> (Paragraph)
+	•	<pre> (Preformatted text)
+	•	<section> (A section of a page)
+	•	<ul> (Unordered list)
+	•	<video> (Video player)
+There are other "block-level" elements in addition to the ones above, but they are less common. It's important to note that because an elemenet is a "block-level" element doesn't mean you cannot set it's display property to be something else. CSS is designed to change the way HTML is laid out be default. Sometimes it makes sense to change a "block-level" element into an "inline" element.
+Example
+The CSS code below would select all button elements and set them to be display: block:
+button {
+    display: block;
+}
+display: inline
+The inline value for display specifies an element's outer display type. An inline element generates one or more inline element boxes, does not start on a new line, and only takes up as much width as necessary. This means that inline elements only occupy the space bounded by the tags defining the element, instead of breaking the flow of content. Below is a list of common elements that are inline by default:
+	•	<a> (Anchor or link element)
+	•	<b> ("Bring attention to" element)
+	•	<br> (Line break)
+	•	<button> (Button)
+	•	<code> (Inline code)
+	•	<em> (Emphasis)
+	•	<i> (Specifies text that is set off from the normal text, like an icon)
+	•	<img> (Image)
+	•	<input> (User input)
+	•	<label> (A form element label)
+	•	<select> (Select box)
+	•	<span> (Generic inline text container)
+	•	<strong> (Strong importance element)
+	•	<textarea> (Larger area for user text input)
+	•	<time> (Represents a period in time)
+The difference between "inline" and "block-level" elements are the content model and formatting. Inline elements may contain only data and other inline elements. For example, the following would be invalid syntax because a <div> is a "block-level" element and a <span> is an "inline" element:
+<span>
+    <div>Hello</div>
+</span>
+By default, "inline" elements do not force a new line whereas "block-level" elements do unless otherwise changed using CSS.
+Even though there are certain elements classified as "inline," it is possible to use CSS to change their behavior. For example, the following code would turn all div elements into inline and all span elements into block.
+div {
+    display: inline;
+}
+
+span {
+    display: block;
+}
+display: none
+The none value for display lets you hide an element. When you set an element to display: none, the element and all its descendant elements will be hidden. Consider the following HTML:
+<div class="hide">
+    <p>Hello World!</p>
+</div>
+
+<div>
+    <p>Goodbye World!</p>
+</div>
+and the corresponding css
+.hide {
+    display: none;
+}
+The CSS above will hide all elements that have the hide class on them. In the example above it will hide the <div class="hide"> element as well as its descendants. This means that the <p>Hello World!</p> will also be hidden. The other <div> element and corresponding descendant <p>Goodbye World!</p> will not be hidden, because they do not have the hide class on them.
+display: flex
+The flex value for display is an inner display type, denoting that the element behaves like a block element and lays out its content according to a "flexbox model". You will get more experience with display: flex further on in the course.
+CSS Positioning
+You can use the position CSS property to define where an element is set in the document. Using position in conjunction with the top, right, bottom, and left properties you can determine the final location of positioned elements. Positioning allows you to take elements out of the normal document layout flow, and make them behave differently, for example sitting on top of one another, or always remaining in the same place inside the browser viewport. This article explains the different position values, and how to use them.
+The CSS position property has a few different values:
+	•	relative: The top and bottom properties specify the vertical offset from the element's normal position. The left and right properties specify the horizontal offset.
+	•	absolute: The top, right, bottom, and left properties specify offsets from the edges of the element's containing block.
+	•	fixed: Same as absolute only the containing block is the initial containing block (i.e. the <body>)
+	•	static: This is the normal/default position. top, right, bottom, and left have no effect on the element.
+Relative Positioning
+Consider that a relatively positioned element is positioned according to the normal flow of the document, and then offset "relative" to where it normally would be placed according to the values set for top, right, bottom, and left. The following code will illustrate a relatively positioned element:
+<div class="box" id="one">One</div>
+<div class="box relative" id="two">Two</div>
+<div class="box" id="three">Three</div>
+<div class="box" id="four">Four</div>
+.relative {
+    position: relative;
+}
+
+.box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: red;
+    color: white;
+}
+
+#two {
+    top: 20px;
+    left: 20px;
+    background: blue;
+}
+Even without running the code above, it is fairly easy to see that the <div> with class="box relative" id="two" will be positioned "relative" to where it would normally be positioned. It will be placed 20px from the top of its normal position, and 20px from the left of its normal position.
+Absolute Positioning
+While relative positioned elements remain in the normal document flow, absolute positioned elements do not. What this means is that other elements that would normally surround the absolute element now act as though the absolute element does not exist. The absolute element is positioned relative to its nearest ancestor. The following code will illustrate an absolutely positioned element:
+<div class="relative">
+    <div class="box" id="one">One</div>
+    <div class="box absolute" id="two">Two</div>
+    <div class="box" id="three">Three</div>
+    <div class="box" id="four">Four</div>
+</div>
+.relative {
+    position: relative;
+    top: 50em;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: red;
+    color: white;
+}
+
+#two {
+    top: 20px;
+    left: 20px;
+    background: blue;
+}
+Now the <div> with class="box absolute" id="two" will be plucked from the normal flow of elements and positioned relative to its containing block, which in this case is the <div> with class="relative". Note in the css we are setting all elements with class relative to position: relative. Without that the browser would continue up the ancestor tree to find an element that is position: relaitve. The <body> is the topmost ancestor in the tree, and is position: relative. This means that if you do not set any relative containers in your HTML, all elements with position: absolute will be positioned relative to the <body>.
+Fixed Positioning
+Elements with position: fixed are very much like elements with position: absolute. The key difference is that fixed elements are positioned relative to the initial containing block, which in most cases is the <body> element.
+<div class="relative">
+    <div class="box" id="one">One</div>
+    <div class="box fixed" id="two">Two</div>
+    <div class="box" id="three">Three</div>
+    <div class="box" id="four">Four</div>
+</div>
+.relative {
+    position: relative;
+    top: 50em;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.box {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: red;
+    color: white;
+}
+
+#two {
+    top: 20px;
+    left: 20px;
+    background: blue;
+}
+The code above will look different from the code for the position: absolute element. If #two is position: absolute it will still be placed relative to the div.relative. In the above example the #two element is position: fixed, and it will be placed relative to the <body>.
+Z-index
+
+The z-index CSS property specifies the z-order of a positioned element. If you think of the document as a coordinate plane, you use top and bottom to position elements along the y-axis while left and right are used to position elements along the x-axis. z-index is used to position elements along the z-axis.
+For any element that is positioned (meaning it is not position: static), the z-index property specifies the stack level of the element. A higher z-index value will mean the element appears in front of elements with lower z-index values. The z-index value is just a number (positive or negative) or auto. auto denotes that the element does not establish a new local stacking context.
+Consider the following code:
+<div class="dashed-box">Dashed box
+    <span class="gold-box">Gold box</span>
+    <span class="green-box">Green box</span>
+</div>
+.dashed-box {
+    position: relative;
+    z-index: 1;
+    border: dashed;
+    height: 8em;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+.gold-box {
+    position: absolute;
+    z-index: 3; /* put .gold-box above .green-box and .dashed-box */
+    background: gold;
+    width: 80%;
+    left: 60px;
+    top: 3em;
+}
+
+.green-box {
+    position: absolute;
+    z-index: 2; /* put .green-box above .dashed-box */
+    background: lightgreen;
+    width: 20%;
+    left: 65%;
+    top: -25px;
+    height: 7em;
+    opacity: 0.9;
+}
+In the code above, the "gold box" will end up on top, followed by the "green box" and then the "dashed box".
+Sizing in CSS
+This reference material will cover some of the common CSS properties used to size elements.
+It's easy to understand this in the context of sizing different typography elements, but keep in mind thats all of these units can be applied to any property that expects a numerical size to be set (height, width, margin, padding, font-size, border-width, etc.).
+Each class in the following example uses a different sizing unit to the elements where the class is applied. Each unit behaves a bit differently, and it's important to understand the difference between them.
+.font-small {
+    font-size: 80%;
+}
+
+.pixels {
+    font-size: 16px;
+}
+
+.ems {
+    font-size: 1em;
+}
+
+.rems {
+    font-size: 1rem;
+}
+
+.percent {
+    font-size: 100%;
+}
+ 
+Absolute Sizes
+Absolute units are, well, absolute. They do not scale with the viewport size or display, and they are a bit antiquated at this point. They still have their use from time to time and you will still encounter them in web development, so it is important to understand what they are.
+Pixels
+Pixels (px) are absolute units, meaning that an element that has a size defined in px will always be that size, regardless of whether you're viewing it on an 5" phone display or a 65" 4K television.
+You almost always want to use relative sizes because there are so many different ways to consume content now. When everyone was using CRT desktop monitors before the proliferation of smart devices, it was acceptable to use pixels because they were the same size on all of the monitors - and everyone's monitor was pretty much the same. Now, in order to provide a consistent and uniform user experience across as many devices as possible, you need to use relative units.
+There are other, less common, absolute units in CSS, but we typically only use pixels (since that's what most display resolutions and browser windows are measured in). These would be mm, cm, in, pt, pc. You may encounter these in other formats (like Photoshop), so keep in mind the conversion that would need to be calculated between absolute units and relative units when working with designers.
+Certain elements in HTML have default sizes in pixels in the browser. For example, the body has a default typography size of 16px. This is important to know because relative units sometimes use this "root" size to determine their relative scale.
+ 
+Relative Sizes (best for responsive design)
+Relative sizes are just that: relative. We've already discussed the importance of using relative sizes; now, let's discuss what they are, and how they're different.
+ems and rems
+em and rem are the units you will use to assign a relative size to an element. These are relative to the current element's font-size, which is either inherited by the parent element (em) or determined by the root element (rem, thus the "r"). The numeric value of the unit will be the multiplier to determine the element's size relative to its reference point (the parent or the root element).
+What does that mean? font-size: 1em; and font-size: 1rem are not always equivalent. 1em is going to be 1x the scale of the parent element's font-size; 1rem will be 1x the scale of the root font-size (e.g., 16px, if it isn't given a different size). 2rem would be 32px.
+This can be confusing at first. The best way to understand these units (and their differences) is to actually use them. Replicate what Matt & Will did in the previous video, and then go change it, refresh those changes in your browser (or change them in the Dev Tools Inspector for live changes), and you'll begin to develop an intuitive understanding of these units.
+Viewport units
+Viewport units are newer, but they've become ubiquitous in web development due to their usefulness. The viewport is the viewable area of the browser window.
+You can easily set the width and height of elements based on the viewport (or what is viewable of the window element) size. For example, setting the size of something based on the viewport height (vh) would be a fraction of the viewport height. height: 1vh; is equivalent to 1/100th of the total viewport height. The same would be true for viewport width (vw). Setting these values to 100vh or 100vw would set either the height or width, respectively, to the full width of the viewport's height or width.
+Percentages
+If you want an element to always be sized relative to the parent container's width (THIS IS IMPORTANT and different from using viewport units) then you could use a percentage value.
+This is similar to using ems, but keep in mind that percentages are always relative to the width of the parent container. If your container takes up the full width of the window, and you then set a child of that container to width: 80%;, then that child element will always take up 80% of the container's width.
+Again, the easiest way to understand this is to play around with it. There are also several examples given in the additional resources link below.
+
+
+CSS Spacing
+CSS spacing can be tricky at first, but once you use the properties a few times you will get the hang of it. When people talk about spacing with regards to HTML elements they usually are thinking of the space around the normal box model of HTML.
+In HTML every element can be thought of as a rectangular box. You use CSS to shape the box, but in general all elements can be thought to have a rectangular box around them. Using padding, border, and margin you can adjust the size and look of the box model. Below is a diagram of the HTML box model.
+
+From the outside in:
+	•	margin: Specifies the space between the border box of the element and other elements
+	•	border: A border that you can style (color, size, etc)
+	•	padding: Separates the border of the box from the content
+	•	content: The content of the box (i.e. child elements, text, etc)
+CSS box-sizing
+The box-sizing CSS property determines how the browser calculates the size of an element. There are two possible values: content-box and border-box.
+	•	content-box gives you the default CSS box-sizing behavior. If you set an element's width to 100 pixels, then the element's content box will be 100 pixels wide, and the width of any border or padding will be added to the final rendered width.
+	•	border-box tells the browser to account for any border and padding in the values you specify for an element's width and height. If you set an element's width to 100 pixels, that 100 pixels will include any border or padding you added, and the content box will shrink to absorb that extra width. This typically makes it much easier to size elements.
+CSS margin
+Margin can be used to separate the border of an element from other elements. The margin CSS property is a short-hand property for margin-top, margin-right, margin-bottom, and margin-left combined. When using the margin property you can specify one, two, three, or four values with each value being either a length, percentage, or auto.
+	•	When one value is specified, it applies the same margin to all four sides.
+	•	When two values are specified, the first margin applies to the top and bottom, the second to the left and right.
+	•	When three values are specified, the first margin applies to the top, the second to the left and right, the third to the bottom.
+	•	When four values are specified, the margins apply to the top, right, bottom, and left in that order (clockwise).
+The values can be defined as one of three things:
+	•	length: A fixed size in rem, em, pt, or px
+	•	percentage: A percentage relative to the width of the containing block
+	•	auto: Allows the browser to select a margin. This is useful in certain cases to center an element
+The following code demonstrates how you can use margin to space elements as well as position them:
+<div class="center">This element is centered.</div>
+
+<div class="outside">This element is positioned outside of its container.</div>
+.center {
+    margin: auto;
+    background: lime;
+    width: 66%;
+}
+
+.outside {
+    margin: 3rem 0 0 -3rem;
+    background: cyan;
+    width: 66%;
+}
+And here is some sample code for every way you can define margin:
+margin: 5%;                 /* All sides: 5% margin */
+
+margin: 10px;               /* All sides: 10px margin */
+
+margin: 1.6em 20px;         /* top and bottom: 1.6em margin */
+                            /* left and right: 20px margin  */
+
+margin: 10px 3% -1em;       /* top:            10px margin */
+                            /* left and right: 3% margin   */
+                            /* bottom:         -1em margin */
+
+margin: 10px 3px 30px 5px;  /* top:    10px margin */
+                            /* right:  3px margin  */
+                            /* bottom: 30px margin */
+                            /* left:   5px margin  */
+
+margin: 2em auto;           /* top and bottom: 2em margin   */
+                            /* Box is horizontally centered */
+
+margin: auto;               /* top and bottom: 0 margin     */
+                            /* Box is horizontally centered */
+CSS padding
+Padding can be used to separate the border of an element from its content. Some people think of margin as "outside spacing" and padding as "inside spacing" because margin creates space "around" an element whereas padding creates space "within" an element. The padding CSS property is a short-hand property for padding-top, padding-right, padding-bottom, and padding-left combined. When using the padding property you can specify one, two, three, or four values with each value being either a length, percentage, or auto.
+	•	When one value is specified, it applies the same padding to all four sides.
+	•	When two values are specified, the first padding applies to the top and bottom, the second to the left and right.
+	•	When three values are specified, the first padding applies to the top, the second to the left and right, the third to the bottom.
+	•	When four values are specified, the paddings apply to the top, right, bottom, and left in that order (clockwise).
+The values can be defined as one of three things:
+	•	length: A fixed size in rem, em, pt, or px
+	•	percentage: A percentage relative to the width of the containing block
+	•	auto: Allows the browser to select a padding. This is useful in certain cases to center an element
+The following code demonstrates how you can use padding to space elements:
+<h4>This element has moderate padding.</h4>
+<h3>The padding is huge in this element!</h3>
+h4 {
+  background-color: lime;
+  padding: 20px 50px;
+}
+
+h3 {
+  background-color: cyan;
+  padding: 110px 50px 50px 110px;
+}
+And here is some sample code for every way you can define margin:
+padding: 5%;                /* All sides: 5% padding */
+
+padding: 10px;              /* All sides: 10px padding */
+
+padding: 10px 20px;         /* top and bottom: 10px padding */
+                            /* left and right: 20px padding */
+
+padding: 10px 3% 20px;      /* top:            10px padding */
+                            /* left and right: 3% padding   */
+                            /* bottom:         20px padding */
+
+padding: 1em 3px 30px 5px;  /* top:    1em padding  */
+                            /* right:  3px padding  */
+                            /* bottom: 30px padding */
+                            /* left:   5px padding  */
+Other Spacing properties
+Here are some other properties that are related to spacing in CSS:
+	•	letter-spacing: Specifies the spacing behavior between text characters
+	•	word-spacing: Specifies the spacing behavior between tags and words
+
+Typography in CSS
+There are many ways you can style and modify the properties of fonts within CSS. The properties you'll be using in your CSS rulesets the most often are: font-family, font-size, font-weight, color, text-decoration, and text-align. This reference material will cover each one of these in a little bit more detail.
+font-family
+font-family allows you to set the actual font for the typography element you're modifying. There are several system wide fonts that are determined based on your operating system and/or browser, but you can also use completely custom fonts from services like Google Fonts or Adobe's TypeKit.
+With Google Fonts, you can simply find the font you want to use in your webpage, and then you need to import the CSS link to the stylesheet. Then, you can set the font-family to the font name you just selected. For example, if you wanted to use the "Lato" font from Google Fonts,font-family: 'Lato', 'Helvetica', sans-serif; would pull in the Google Font (assuming you've imported the linked stylesheet in your index.html), and it would also assign "Helvetica" and the system default "sans-serif" fonts as fallback fonts in case Lato wasn't supported or was blocked in the browser from being loaded.
+font-weight
+When you are looking at different fonts to use, you may often see numbers associated with the weight of the font. These range from 100 to 900, and the weight (or the boldness) of the font increases as the numbers increase. In other words, font-weight: 100; would be a very thin font whereas font-weight: 700; would be very bold. You can set this property individually for different elements, but there are often default styles already set for font-weight in many CSS frameworks and by default in HTML.
+Often, in web development, you will be given font assets (source files) that have various weights and sizes associated with them from a web designer. They will come up with the design, the font-family, font-sizes, and font-weights that need to be used throughout the site (and where). You just need to go implement them!
+font-size
+font-size is pretty simple; it's the size of the font. ;-)
+I would refer to the "CSS Sizing" video lectures and reference material to see how you can manipulate the size of fonts for your webpage designs.
+text-decoration
+This property allows you to set (or unset) the "decoration" on text in HTML. The most common properties you'll set are underline and none -- if you want to underline text, you can set the text-decoration: underline; or if you want to remove a default underline (from a hyperlink, for example) then you can set the text-decoration: none;.
+You can also set multiple text-decoration properties at once by simply separating them with a space: text-decoration: underline overline line-through;.
+text-align
+text-align is exactly what you think it would be. It sets the alignment for the text. You can think about this the same exact way that you would in a word processor; if you set text-align to left, center, or right, the text that style is applied to will be either left-aligned, centered, or right-aligned, respectively.
+color
+This, like font-size, is pretty straightforward. It sets the color of the font.
+The trickiest part about this is that it is simply color, not font-color!
+The values can be a HEX value, rgba(), or just simply a color name like red, aquamarine, black, etc.
+
+Borders in CSS
+There are a few different ways to implement borders: one is a shorthand notation that includes all of the individual properties that you can set.
+The shorthand notation is:
+border: <width> <style> <color>;
+For example, border: 1px solid black; (you can also use HEX colors for the color)
+You could alternatively set the properties individually with:
+border-width: 1px;border-style: dashed;border-color: #000000;
+box-shadow
+You can add depth to your webpage by adding box-shadow to elements, like forms, cards, or other sections to which you want to draw the user's attention.
+box-shadow: <x-offset> <y-offset> <blur-radius> <spread-radius> <color>;box-shadow: 2px 2px 2px 5px #000000;
+You can specify just one offset and a color for a box-shadow, but it won't be blurred or spread away from the element. It's highly recommended to try and figure out what you want the box-shadow to look like with tools like cssmatic.com.
+hr (horizontal rule)
+This element <hr> creates a horizontal line across the window. You can access its styles in a similar manner as borders.
+
+
+Background Properties in CSS
+The background property can be set to a color, but it can also be set to an image. When the background is an image, you have different properties that you can set to define how the image is displayed.
+For this reference, we're going to assume the following HTML and CSS which will put a div on the page that takes up the entire screen. The examples will be modifying the .bg-img CSS class.
+<html>
+    <head>
+        <title>CSS Background</title>
+    </head>
+    <body class="full-screen">
+        <div class="full-screen bg-img"></div>
+    </body>
+</html>
+.full-screen {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+Setting Background to an Image
+Instead of setting the background to a color, we're going to set it to an image using the url function to point to an image. The image can be local within the project using absolute or relative paths or on the internet.
+.bg-img {
+    background: url('mypicture.jpg');
+}
+The example above sets the background to an image (mypicture.jpg) that should exist in the same directory as the HTML file. You can also point to an image on the internet:
+.bg-img {
+    background: url('https://bit.ly/2rvUrNH');
+}
+
+background-position
+Depending on the image you are showing it may not be where you want it to be on the screen. You can change the position using background-position.
+The values for can be left, top, center, bottom, right or a combination of 2 of these values (i.e. right top).
+.bg-img {
+    background: url('https://bit.ly/2rvUrNH');
+    background-position: center;
+}
+background-repeat
+You may or may not want the background to repeat. If you don't want it to repeat, set the value to no-repeat.
+.bg-img {
+    background: url('https://bit.ly/2rvUrNH');
+    background-position: center;
+    background-repeat: no-repeat;
+
+MDN: CSS Values and Units (sizing): https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units 

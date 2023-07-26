@@ -1,0 +1,440 @@
+Javascript 101: datatypes, variables, objects, arrays
+
+    Datatypes: Primitive and Complex
+        
+        Primitive types: numebers, stings, boolean
+            null = non-value (defined as no value)
+            integer = number
+            boolean = true/false vaule
+            character = single character
+            float-point number = number with decimal
+            string = a group of characters (words)
+            undefind = variable is not defined
+        
+        Complex types: array, object, 
+            
+            array: var name = ['will','david','fred'] 
+                - high-level list-like contains values
+                - has a length
+                - Stores a series of data ( primative and complex)
+                - ie: let myArr = [1,2,3];
+                - ie: length = 3
+            
+            objects - root level of any variable in JS
+                - ie: let myObj = {foo:1,bar:2};
+
+            function - Objects that can perform computation. 
+                - Often they have arguments in and can return values
+                -ie  decliraction: function mutiply(arg1, arg2){return arg1 * arg2}
+                -ie  usage: let result = mutiply(2,4)
+            
+    Variables: var, let, const, block-scope 
+
+        var = declares a variable, optional initializing to a value
+            
+            use camelCase for name
+
+            var x=1;
+                console.log(x);
+                output: 1
+            if(x===1){var x=2; console.log(x)}
+                output: 2
+            console.log(x)
+                output: 2
+
+            the function changes the var and it stays that way after the 
+            
+        let = declares a BLOCK-SCOPED LOCAL variable, optional initializing to a value
+            
+            use camelCase for name
+            
+            let x=1;
+                console.log(x);
+                output: 1
+            if(x===1){let x=2; console.log(x)}
+                output: 2
+            console.log(x)
+                output: 1
+
+            the function changes the let and can produce the changed value 
+            inside of the function and it reverts back to the original vaule
+
+        const = declares a BLOCK-SCOPED LOCAL variable, value is constant and cannot be re-assigned or redeclared
+            
+            use UPPER_SNAKE_CASE for name
+            
+            functions do not change the constant, trying to change it will result in a type error
+
+    Objects: Simple(arrays) Complex(objects), Weakly, zero-indexed,  .properties, methods, array method library, objects
+
+        Datatypes: Weakly/Strongly
+
+            "weakly" vs "strongly"
+                
+                JS is a weak language meaning it can be changed in the code while running
+                
+                C# stong languages do not change and are not flexible
+            
+        Datasest: Array, Properties, methods, Objects
+
+            Array: zero-index
+                let myArr = [1,2,3];
+                zero-index =[0,1,2}; 
+                    so 0 is the first item in the array,
+                index reference to the position in the 
+
+                how to call an arrays indexed items
+                    console.log(myArr[2]) = 3
+                    
+                logic can also be added inside of the index call
+                    console.log(myArr[1+1]) = 1
+
+            Properties: .properties & variable[properties], null
+                null and undefined do not have properties
+                access properties via .properties and variable[properties]
+                .properties are prefered for most 
+                [properties] are for dynamic properties using variable
+
+                ie: 
+                    let greet = 'hello';
+                    let property = 'length'
+                    below are all the same result     
+                        console.log(greet.length);
+                        console.log(greet['length']);
+                        console.log(greet[property]);
+
+            Methods: .length, .toUpperCase library
+                    
+                strings and arrays have length
+                properties that are functions
+                they have access to the vaules
+                    
+                Array Method library
+                    .push - add to the end of an array
+                    .pop - remove from the end of an array and return
+                    .unshift - add to the front of an array
+                    .shift - remove from the front and return
+                    .concat - combines arrays and returns the a new array ( not changing either array)
+                    
+                    names based off of stacks and queues, which use LIFO and FIFO
+
+                    Stacks = LIFO
+                    Queues = FIFO
+                        
+            Objects: Collection of data, Object literal, let myObj={propA:'valueA',}
+                arbitrary collection of properties
+
+                    ie:
+                    let post = {                            - variable object
+                        title: 'welcome to my blog',        - String
+                        category: 'Blog post',              - String
+                        body: 'hello text',                 - String
+                        tags: ['JS','CSS','HTML']           - Array
+                    }
+
+                    console.log(post.title) = "welcome to blog'
+                    console.log
+                
+                Object literal
+                    let myObj={
+                        propA:'valueA',
+                        propB: [1,2,3]
+                        }
+                
+                search and Defining property
+                    search
+                        object.key() =  all properties
+                        object.values() = values
+                    Define
+                    object.assign(post, {propA:valueA, propb:valueb,}
+                        this allows you to change and edit a variable
+                    myObj.key = 'value'; 
+
+                questions: 
+                    let myObj = null to let myObj={  } be define as we go through functions and methods
+                    'prop c':'value c'
+
+                Object mutability: mutable vs immutable
+                    immutable - Complex types, variable( let, var)
+                    mutable - primitive types are can not be changed, const variable
+
+                    Sample:
+                        let a = {
+                            value: 10
+                        };
+
+                        let b = a;
+                        let c = {
+                            value: 10
+                        };
+
+                        console.log(a == b);
+                        // -> true
+                        console.log(a === b);
+                        // -> true
+                        console.log(a == c);
+                        // -> false
+                        console.log(a === c);
+                        // -> false
+
+                        a.value = 15;
+
+                        console.log(a.value);
+                        // -> 15
+                        console.log(b.value);
+                        // -> 15
+                        console.log(c.value);
+                        // -> 10
+
+                        a = {
+                            value: 10
+                        };
+
+                        console.log(a.value);
+                        // -> 10
+                        console.log(b.value);
+                        // -> 15
+                        console.log(c.value);
+                        // -> 10
+
+    Javascript Operators: Experssions, Assignment, Destruction, Comparision, arithmetic, Bitwise, Logical, String, Relational, other Unary
+        Used to assign, compare, and preform arithmetic plus more
+
+        Experssions : Operators, Operands, Unary, Binary, Ternary
+            Operators: the verb ( action ) taken
+                8 * 3
+                * is the operator
+
+            Operands: values and arguments
+                8 * 3
+                8 is an operand
+                3 is an operand
+            
+            Unary experssion: ++x; or x++;
+                single operand ( operator operand ) or reverse
+                        ++x; or x++;
+            
+            Binary experssion: 3+4; or 6/y;
+                two operand ( operand operator operand)
+                    3+4; or 6/y;
+
+            Ternary experssion: ONLY CONDITIONAL OPERATORS (age >=21) ? 'alchoholic : 'non-alchoholic'
+                condition ? val1 : val2
+                    if condition is true the operator has a value of val1, otherwise it is val2
+
+        Assignment Operators: =, +=, 
+                
+            Simple assignment operand value to the left operand based on the right operand
+                x = 1
+                
+            Compound assignment operand: 
+                (x += y) is x = x + y;
+                (x -= y) is x = x - y;    
+
+        Destructuring:let var = [1,2,3,]  / let [val1,val2,val3] = var / console.log(val1) / result -> 1
+
+            complex assignments use destructuring arrays and objects, in other words mirror obj lit that also 
+                A way to give values/properties in arrays and objects there own varible title
+                    let foo = [1, 2, 3];
+
+                    // without destructuring
+                    let one = foo[0];
+                    let two = foo[1];
+                    let three = foo[2];
+
+                    // with destructuring
+                    let [one, two, three] = foo;
+
+                    result:
+                    console.log(one)
+                    result = 1
+
+        Comparision:returns true or false ( ==, !=, ===, !==, >, <, >=, <=)
+            compares operands and returns true if valid or false if not valid
+
+            compare types
+                ==  equal
+                !=  not equal
+                === strict equal
+                !== strict not equal
+                >   great than
+                <   less than
+                >=  greater than or equal
+                <=  less than or equal
+
+        Arithmetic: returns numbers ( % (binary), ++, --. +, - ) 
+            take numereical values ( litiral or variable) and returns a single numereical value
+
+            types:
+                %   Reminader / Binary
+                    returns the interger remiander of dividing two operands
+                ++  Increment
+                    Pre and Post operator: increases value by one 
+                --  Decrement
+                    Pre and Post operator: decreases value by one 
+                -   Unary negation
+                    processes a negative on a value 
+                +   Unary Plus
+                    attempts to to convert operand to a number
+
+        Bitwise: 32 bit function ops: &, |, ^, ~, <<, >>, >>>
+            (8 sets of four 0) -  0000 0000 0000 0000 0000 0000 0000 0000
+            Learn Binary: https://www.mathsisfun.com/binary-decimal-hexadecimal-converter.html 
+            Treats oprands as a set of 32 bit ( zeros and ones )
+                &   Bitwise AND
+                    Binary - return a 1 for each shared 1 when each operand is compared. the rest turn to 0
+                |   Bitwise OR
+                    Binary - return a 0 for each shared 0 when each operand is compared. the rest turn two 1
+                ^   Bitwise XOR
+                    Binary - return a 0 for each shared 1 and 0 when each operand is compared. the rest turn to 1
+                ~   Bitwise NOT
+                    Unary - reverses the 32 bit code ( creates a negitive and increases numereal by 1 )
+                
+
+                <<  left shift
+                    Binary - pushes the left operand to the left ( in binary ) the number of the right operands value adding 0 in place
+                >>  Sign-propagatation right shift
+                    Binary - pushes the left operand to the right ( in binary ) the right operands value and disregards the pushed off binary
+                >>> Zero fill right shift
+                    Binary - shifts 
+        
+        Logical: &&, ||, !
+            boolean( logical / true false ) 
+            
+            AND && -both have to be true
+                Binary - returns the true if both conditions are true
+            OR  || - one or the other have to be true
+                Binary - returns true if one or the other are true
+            NOT !
+                Unary - will return true if the condition is false an  vise versa
+
+        String: +  /  +=
+                concat strings together
+
+        Other Unary: delete, type of, void
+            delete
+                removes object, or object property, or and element at a specified index in an array
+            typeof
+                returns a string indicating the type operand with syntax
+            void
+                specifies an expression to be evaluated without returning a value
+
+        Relational: in , instanceof
+            in
+                __ in ___ - returns true if the property is in the object
+
+                    let trees = ['redwood', 'bay', 'cedar', 'oak', 'maple'];
+                    3 in trees;        // returns true
+                    6 in trees;        // returns false
+                    'length' in trees; // returns true (length is an Array property)
+            
+            instanceof
+                returns true 
+
+        Operator Precedence: order of operations 
+            member	. []
+            call/create instance	() new
+            negation/increment	! ~ - + ++ -- typeof void delete
+            multiply/divide	* / %
+            addition/subtraction	+ -
+            bitwise shift	<< >> >>>
+            relational	< <= > >= in instanceof
+            equality	== != === !==
+            bitwise-and	&
+            bitwise-or	|
+            logical-and	&&
+            logical-or	||
+            conditional	?:
+            assignment	= += -= *= /= %= <<= >>= >>>= &= ^=	=
+            comma	,
+
+    Conditional Statements: If(){}..else{}, Ternary Ops; ()?'val1':'val2';,  
+        How actions can be prefromed
+            If this conditions is true, run code A, else run code B 
+        
+        If..else statements: if(){}, if(){}else{}, if(){}else if(){}else{}
+            best to use for a couple of choices that use reasonable amount of coding or have complex conditions
+            if, else if, else
+                if(condition){ run code }
+                if(condition){run code A if condition is true }else{run code b if condition is false}
+                if(condition){}else if(){}else{}
+
+        Nesting putting if else into if else
+            if(){
+                if(){
+                    argument
+                }
+                else(){
+                    argument
+                }
+            } else (){
+                if(){
+                    argument
+                }
+                else(){
+                    argument
+                }
+            }
+
+        Using Logical Operators:
+            Can be used to test mutiple conditions for if ..else
+            Can remove the use of nesting
+            Common mistake: forgeting to to restate the varaible 
+                WRONG: if (userWallet === 150 || 200 || 250) {code}
+                RIGHT: if (userWallet === 150 || userWallet === 200 || userWallet === 250) {code}
+            
+        Switch Statement: Switch(){case 'soda': console.log(); break; default: ;) 
+            use for a LARGE number of choices, single experssion as an input and then look through the chocies and  and exacute that code
+            
+            Switch(userChocie){
+                case 'soda';
+                    console.log('1.50')
+                break;
+                case 'beer';
+                    console.log('4.50')
+                break;
+                    default:
+                        console.log(please select an option); (optional)
+                    }
+
+        Ternary Operator: If else can be far less confusing
+            VERY SIMPLE CASES - if condition = true run 1 if false run 2 
+            (condition) ? 'code 1' : ' code 2 instead'
+
+    Javascript Loops: while(){}, for([];[];[]){}, Do{}While();
+        Loops repeat something a number of time, even 0. 
+        the different types change how many times the loop is preformed and when it ends
+
+        while(condition){code};
+            if the condition is true this code keep looping
+            be careful of infinite loops ( Where certain things can never be met)
+
+        for([initialExperssion];[condition];[incrementExpression]){code}
+            while loop with initialExperssion, that runs before code, and an incrementExperssion that runs after code
+
+            let total = 10;
+            for (let i = 0; i < total; ++i) {code}
+
+        do {} while (); 
+            swaps order of eval. runs code first than check condition
+            code runs if value is 0.
+
+        for(_in_){} use on objects 
+            returns an objects keys and properties in a looping fashion until the end of the object enumberation
+            best used for objects, use the for when addressing arrays
+
+            
+
+        for (_of_){} use on array
+
+            
+            
+
+    Javascript Functions:
+
+    BLOCK-SCOPE & Blocks:
+            the blockscope variable change inside of the blocks but reverts outside of the block    
+
+    console.log vs return
+        - return passes a value back to where the call was made
+        - console.log prints infomation to the console
