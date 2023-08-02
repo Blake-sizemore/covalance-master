@@ -56,4 +56,29 @@ $(document).ready(function () {
 
     let Concise = n => console.log(`${n.first}`);
     Concise(fullName);
+
+    let doMath = (a, b) => ({
+        product: a + b,
+        expo: a ^ b
+    });
+
+    let { product, expo } = doMath();
+
+    console.log(doMath(2, 3).product);
+    console.log(doMath(2, 3).expo);
+    console.log(doMath(2, 4));
+
+    // Spread Operator
+    let parmAsset = ['billy', 'Texas', 'apple pie'];
+    let parm = (name, location, favFood) => console.log(name, location, favFood);
+    parm(...parmAsset);
+
+    let myName = 'blake';
+    let whatever = (a) => {let letter = [...a];
+        console.log(letter);
+        for (i = 0; i < myName.length; ++i) { 
+            console.log(letter[i])
+            } 
+        };
+    whatever(myName);
 });

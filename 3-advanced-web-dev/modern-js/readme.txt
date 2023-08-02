@@ -36,11 +36,19 @@ Arrow Functions
     Call the function.
     Verify that your message is still logged in the console.
     Use the shorthand "concise body" syntax for this arrow function so that the console.log statement is on the same line as the arrow.
+    
     Create a new arrow function called getFirstName.
-    Create a second arrow function called getFirstNameConcise using the concise body syntax. Both functions will serve the same purpose.
+    
+    Create a second arrow function called getFirstNameConcise using the concise body 
+    
+    syntax. Both functions will serve the same purpose.
+    
     Each function will accept one string that will be someone’s full name.
+    
     When the full name is passed to the function, the function should return the first name. (hint)
+    
     Console log the returned output of these functions to confirm you see a first name only.
+    
     Create a new function named doMath that will take in two parameters and return an object literal. It should have two properties, the exponent result (x^y) and the product of the two numbers.
     Log each property using a template literal.
 
@@ -50,9 +58,12 @@ Hints
 
 Spread Syntax
 
-    Write a function that takes 3 parameters: name, location, favFood and logs them to the console (either separately or all at once using a template literal).
+    Write a function that takes 3 parameters: name, location, favFood and logs them to the console (either separately or all at once using a template literal).    
     Create an array with 3 values, have the values match the order of the 3 parameters. Ex. let arr = ["Paul", "Birmingham", "Kimchi"];
+
     Spread operators allow us to take multiple values, like an array, and insert them as 3 separate values. Using a spread operator, insert the values of the array into the function, check the console and see what appears.
+
+Spread 2
     Create a variable and set the value to your name.
     Write a function that takes a parameter, name the parameter whatever you’d like.
     Using spread syntax, create a variable in the function that takes the string you pass into the function and spreads it into an array.
