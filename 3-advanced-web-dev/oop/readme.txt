@@ -1,0 +1,136 @@
+Object oreint programming
+Core of modern programming
+
+    model real world data once so that we no longer to record
+
+    functions are methods
+
+    Class = blueprint/madlib gaps
+
+    instance = completed madlib
+
+    Instantiation = the method being filled and activated 
+
+    . = object
+
+Shorthand
+
+    let object = {}; === let object = new object();
+
+    let arr = []; === let arr = new array();
+
+Pseudo-class
+    JS does no have traditional OOP class so we jigsaw them together
+    They us functions and prototypes
+
+    constructor
+    use this.nameProp
+
+Prototype = Object and its methods "function"
+    the string prototype is what makes a string behave likea sting.
+
+Constructor
+    function Person(name, age){
+        this.name = name;
+        this.name = age;
+    }
+
+Method/Prototype
+    Person.prototype.sayHello = function(){
+        alert("hello "+this.name+" you are "+this.age+".")
+    }
+
+Instantiation
+    let p1 = new Person ('Bill',29);
+    p1.sayHello();
+
+Encapsulation - use to seprate the visable parts from the hidden background parts, you can change parts without effecting the whole.
+
+    Class Avatar:
+        private properties
+        public methods
+        private methods
+
+Composition/inheritance - 
+
+    function newChild(parentProp, newChildProp){
+    classparent.call(this,parentProp,parentProp)
+    this.newChildProp = newChildProp }
+
+    child.prototype = Object.create(Parent.prototype) - sets teacher to Parent
+    child.prototype.method = choosen method - reset constructor to teacher
+        can use for constructor
+        can use for updating methods
+
+    let newThing = new classClass Name
+
+    Class inventory:
+        public methods
+        private propetires
+
+Polymorphism
+    Re-review
+
+How to on Pseudo-Class make up
+
+    class Name {
+        constructor{
+
+        }
+        method{
+
+        }
+    }
+
+    class Name extend anotherClassName {
+        constructor(var){
+            super(alterered var mathcing extended class)
+        }
+        static title(class Name*limited to circle){ code };
+        get title(){};
+        set title(){};
+        methods{ make adjustments if need for each extend property}
+    }
+
+2015 ES shorthand and updates
+
+    Class parentClass {
+        constructor(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        sayHello(){
+            alert('text ${litiral}');
+        }
+        sleep(){
+            alert('sleep text $ liltral')
+        }
+    }
+
+    let p1 = new parentClass ('jane',29)
+    p1.sayHello();
+
+    class newChildClass extends parent {
+        constructor(name, age, dept){
+            super(name,age);
+            this.dept = dept;
+        }
+    }
+
+    extend+super === prototype/object.create verbage
+    
+    OLD WAY
+        function newChildClass (parentProp, newChildProp){
+            classparent.call(this,parentProp,parentProp)
+            this.newChildProp = newChildProp }
+
+            child.prototype = Object.create(Parent.prototype) - sets teacher to Parent
+            child.prototype.method = choosen method - reset constructor to teacher
+                can use for constructor
+                can use for updating methods
+
+            let newThing = new classClassName;
+            newThing.sayHello
+
+    
+
