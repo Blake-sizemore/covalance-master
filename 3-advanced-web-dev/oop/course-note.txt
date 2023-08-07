@@ -94,18 +94,6 @@ How to on Pseudo-Class make up
 
 2015 ES shorthand and updates
 
-    Class parentClass {
-        constructor(name, age){
-            this.name = name;
-            this.age = age;
-        }
-        sayHello(){
-            alert('text ${litiral}');
-        }
-        sleep(){
-            alert('sleep text $ liltral')
-        }
-    }
 
     let p1 = new parentClass ('jane',29)
     p1.sayHello();
