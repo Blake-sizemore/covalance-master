@@ -23,11 +23,8 @@ Inheritance
     So to keep it simple lets have this vehicle class construct an object that only has the properties manufacturer and number of wheels.
 
     Include a method called aboutVehicle, have it console log a string which will say what type of vehicle it is, who made it, and how many wheels it has. You can hardcode the type or specify it as an additional property on each class.
-
     Trucks are vehicles, they have wheels. So let’s create a vehicle class that inherits the property of wheels from vehicle, but trucks have doors (unlike motorcycles) and they have a truck bed. So let’s add a number of doors property to this object as well as a boolean they it is true, it has a truck bed.
-
     Now sedans are vehicles also, but they don’t have a truck bed (We’re ignoring the fact El Caminos broke this rule), they do have doors as well as 4 wheels. So to practice inheritance, lets just say sedans are vehicles, they aren’t trucks because they don’t have a truck bed but they get good gas mileage. Create a class sedan which extends vehicle, give it an additional property of size which could be small or medium, and give it a property of mpg.
-
     Motorcycles are also vehicles, but they don’t have doors, or 4 wheels, or go in reverse (technically). So create a class motorcycle that extends vehicle, have it include a property to determine that it has handlebars and not a steering wheel, as well as another property to show it has no doors.
     
     Each child class inherited the method which was created in vehicle, but each child class now has other specific features which define it. Override the aboutVehicle method in each child class to console log a string that represents these features, but still have it log the type, manufacturer and how many wheels it has!
