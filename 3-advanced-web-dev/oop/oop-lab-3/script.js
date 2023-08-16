@@ -4,7 +4,6 @@ $(document).ready(function () {
   $(`#inputZone`).addClass(`d-flex justify-content-center m-2`);
   $(`main`).addClass(`row bg-dark justify-content-center my-3`);
 
-
   class elementMaker {
     constructor(appeand, e, eId, eClass, eVis, eTxt) {
       this.appeand = appeand;
@@ -21,15 +20,18 @@ $(document).ready(function () {
   }
 
   class button extends elementMaker {
-    constructor(appeand, e, eId, eClass, eVis, eTxt, eType) {
+    constructor(appeand, e, eId, eClass, eVis, eTxt, eType,eShape) {
       super(appeand, e, eId, eClass, eVis, eTxt);
       this.eType = eType;
       this.e = `button`;
       this.eClass = `col col-2 m-1 btn btn-primary`;
-      this.eType = `submit`;
+      this.eType = `button`;
+      this.eShape = eShape;
     }
     addBtnBasic() {
-      $(`#${this.eId}`).attr(`type`, this.eType);
+      $(`#${this.eId}`).attr(`type`, this.eType).on(`click`, function (){
+        $(`#canvasOutput`).text(this.eShape);
+      });
     }
   }
 
@@ -46,25 +48,39 @@ $(document).ready(function () {
     }
   }
 
+  // class shapeMaker {
+  //   constructor(size){
+  //     this.size = size;
 
-  let inputZone = new elementMaker(`header`, `form`, `shapesBtn`, `row row-cols-4 d-flex justify-content-center`, `visible`, ``);
-  let canvasZone = new elementMaker(`main`, `div`, `canvasInput`, `border border-primary m-1`, `visible`, `Populate shapes here`);
-  let outputZone = new elementMaker(`main`, `div`, `canvasOutput`, `border border-primary m-1`, `visible`, `output populates here`);
-  let btnSquare = new button(`#shapesBtn`, ``, `btnSquare1`, ``, ``, `Make a Square`, ``);
+  //   }
+  //   addShape(){
+  //   $(`#canvasInput`).append(this.size);
+  //   }
+  // }
+
+  let inputZone = new elementMaker(`header`, `form`, `shapesBtn`, `row row-cols-4 d-flex justify-content-center `, `visible`, ``);
+  let canvasZone = new elementMaker(`main`, `div`, `canvasInput`, `border border-primary m-1 text-white`, `visible`, ``);
+  let outputZone = new elementMaker(`main`, `div`, `canvasOutput`, `border border-primary m-1 text-white`, `visible`, ``);
+  let shapeDetail = new elementMaker(`#canvasOutput`, `div`, `shape`, `row`, ``, `Shape Details`);
+  // let heightDetail = new elementMaker();
+  // let widthDetail = new elementMaker();
+  // let areaDetail = new elementMaker();
+  // let perimeterDetail = new elementMaker();
+  // let radiusDetail = new elementMaker();
+  let btnSquare = new button(`#shapesBtn`, ``, `btnSquare1`, ``, ``, `Make a Square`, ``,`Square`);
   let inputSquare = new input(`#shapesBtn`, `input`, `inputSquare1`, ``, ``, ``, ``, `input size`, `inputSquare`);
-  
-  let btnRec = new button(`#shapesBtn`, ``, `btnRec1`, ``, ``, `Make a Rectangle`, ``);
-  let inputRecHeight = new input(`#shapesBtn`, `input`, `inputRecH`, ``, ``, ``, ``, `input Height`, `inputRecHeight`);
+
+  let btnRec = new button(`#shapesBtn`, ``, `btnRec1`, ``, ``, `Make a Rectangle`, ``,`Rectangle`);
+  let inputRecHeight = new input(`#shapesBtn`, `input`, `inputRecH`, ``, ``, ``, ``, `input size`, `inputRecHeight`);
   // let inputRecWidth = new input(`#shapesBtn`, `input`, `inputRecW`, ``,``, ``, ``, `input Width`, `inputRecWidth`);
 
-  let btnCir = new button(`#shapesBtn`, `button`, `btnCir1`, ``, ``, `Make a Circle`, ``);
+  let btnCir = new button(`#shapesBtn`, `button`, `btnCir1`, ``, ``, `Make a Circle`, ``,`Circle`);
   let inputCir = new input(`#shapesBtn`, `input`, `inputCir1`, ``, ``, ``, `input size`, `input size`);
-  let btnTri = new button(`#shapesBtn`, `button`, `btntTri1`, ``, `hidden`, `Make a Triangle`, ``);
+  let btnTri = new button(`#shapesBtn`, `button`, `btnTri1`, ``, `hidden`, `Make a Triangle`, ``,`Triangle`);
   let inputTri = new input(`#shapesBtn`, `input`, `inputTri1`, ``, ``, ``, `input size`, `input size`);
 
 
   inputZone.addBasic();
-  $(`#shapesBtn`).width(`70em`);
 
   btnSquare.addBasic();
   btnSquare.addBtnBasic();
@@ -75,9 +91,6 @@ $(document).ready(function () {
   btnRec.addBtnBasic();
   inputRecHeight.addBasic();
   inputRecHeight.addInputBasic();
-  // inputRecWidth.addBasic();
-  // inputRecWidth.addInputBasic();
-
 
   btnCir.addBasic();
   btnCir.addBtnBasic();
@@ -94,4 +107,6 @@ $(document).ready(function () {
 
   outputZone.addBasic();
   $(`#canvasOutput`).height(`40em`).width(`16em`);
+
+
 })
