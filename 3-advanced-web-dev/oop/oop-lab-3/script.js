@@ -16,11 +16,27 @@ $(document).ready(function () {
     addBasic() {
       $(this.appeand).append(`<${this.e} id=${this.eId}></${this.e}>`);
       $(`#${this.eId}`).addClass(`${this.eClass}`).attr(`visibility`, `${this.eVis}`).text(`${this.eTxt}`);
+      return this;
+    }
+  }
+
+  class zone extends elementMaker {
+    constructor(appeand, e, eId, eClass, eVis, eTxt, eHeight, eWidth) {
+      super(appeand, e, eId, eClass, eVis, eTxt)
+      this.appeand = `main`;
+      this.eClass =`row ${eClass}`;
+      this.eHeight = eHeight;
+      this.eWidth = eWidth;
+      this.eVis = `visible`;
+    }
+    addZoneBasic() {
+      $(`#${this.eId}`).height(`${this.eHeight}`).width(`${this.eWidth}`);
+      return this;
     }
   }
 
   class button extends elementMaker {
-    constructor(appeand, e, eId, eClass, eVis, eTxt, eType,eShape) {
+    constructor(appeand, e, eId, eClass, eVis, eTxt, eType, eShape) {
       super(appeand, e, eId, eClass, eVis, eTxt);
       this.eType = eType;
       this.e = `button`;
@@ -29,9 +45,11 @@ $(document).ready(function () {
       this.eShape = eShape;
     }
     addBtnBasic() {
-      $(`#${this.eId}`).attr(`type`, this.eType).on(`click`, function (){
-        $(`#canvasOutput`).text(this.eShape);
-      });
+      $(`#${this.eId}`).attr(`type`, this.eType).on(`click`, () => {
+        $(`#shapeDetail`).append(`: ${this.eShape}`);
+        console.log(`: ${this.eShape}`);
+        return this;
+      })
     }
   }
 
@@ -45,6 +63,7 @@ $(document).ready(function () {
     }
     addInputBasic() {
       $(`#${this.eId}`).attr(`type`, this.eType).attr(`placeholder`, this.ePlaceHolder).attr(`name`, this.eName);
+      return this;
     }
   }
 
@@ -58,55 +77,43 @@ $(document).ready(function () {
   //   }
   // }
 
-  let inputZone = new elementMaker(`header`, `form`, `shapesBtn`, `row row-cols-4 d-flex justify-content-center `, `visible`, ``);
-  let canvasZone = new elementMaker(`main`, `div`, `canvasInput`, `border border-primary m-1 text-white`, `visible`, ``);
-  let outputZone = new elementMaker(`main`, `div`, `canvasOutput`, `border border-primary m-1 text-white`, `visible`, ``);
-  let shapeDetail = new elementMaker(`#canvasOutput`, `div`, `shape`, `row`, ``, `Shape Details`);
-  // let heightDetail = new elementMaker();
-  // let widthDetail = new elementMaker();
-  // let areaDetail = new elementMaker();
-  // let perimeterDetail = new elementMaker();
-  // let radiusDetail = new elementMaker();
-  let btnSquare = new button(`#shapesBtn`, ``, `btnSquare1`, ``, ``, `Make a Square`, ``,`Square`);
+  let inputZone = new zone(`header`,`div`, `shapesBtn`, `row-cols-4 justify-content-center 1-m`,``,``, `1em`, `56em`);
+  inputZone.addBasic().addZoneBasic();
+  let canvasZone = new zone(``,`div`, `canvasInput`, `border border-primary m-1 text-white`, ``, ``, `40em`, `40em`);
+  canvasZone.addBasic().addZoneBasic();
+  let outputZone = new zone(``,`div`, `canvasOutput`, `row-cols-2 border border-primary m-1 text-white`, ``, ``, `40em`, `16em`);
+  outputZone.addBasic().addZoneBasic();
+
+  let shapeDetail = new elementMaker(`#canvasOutput`, `div`, `shapeDetail`, `col border border-primary`, ``, `Shape Details`);
+  shapeDetail.addBasic();
+  let heightDetail = new elementMaker(`#canvasOutput`, `div`, `heightDetail`, `col border border-primary`, ``, `Height Details`);
+  heightDetail.addBasic();
+  let widthDetail = new elementMaker(`#canvasOutput`, `div`, `widthDetail`, `col border border-primary`, ``, `Width Details`);
+  widthDetail.addBasic();
+  let areaDetail = new elementMaker(`#canvasOutput`, `div`, `areaDetail`, `col border border-primary`, ``, `Area Details`);
+  areaDetail.addBasic();
+  let perimeterDetail = new elementMaker(`#canvasOutput`, `div`, `perimeterDetail`, `col border border-primary`, ``, `Perimeter Details`);
+  perimeterDetail.addBasic();
+  let radiusDetail = new elementMaker(`#canvasOutput`, `div`, `radiusDetail`, `col border border-primary`, ``, `Radius Details`);
+  radiusDetail.addBasic();
+
+  let btnSquare = new button(`#shapesBtn`, ``, `btnSquare1`, ``, ``, `Make a Square`, ``, `Square`);
+  btnSquare.addBasic().addBtnBasic();
   let inputSquare = new input(`#shapesBtn`, `input`, `inputSquare1`, ``, ``, ``, ``, `input size`, `inputSquare`);
+  inputSquare.addBasic().addInputBasic();
 
-  let btnRec = new button(`#shapesBtn`, ``, `btnRec1`, ``, ``, `Make a Rectangle`, ``,`Rectangle`);
+  let btnRec = new button(`#shapesBtn`, ``, `btnRec1`, ``, ``, `Make a Rectangle`, ``, `Rectangle`);
+  btnRec.addBasic().addBtnBasic();
   let inputRecHeight = new input(`#shapesBtn`, `input`, `inputRecH`, ``, ``, ``, ``, `input size`, `inputRecHeight`);
-  // let inputRecWidth = new input(`#shapesBtn`, `input`, `inputRecW`, ``,``, ``, ``, `input Width`, `inputRecWidth`);
+  inputRecHeight.addBasic().addInputBasic();
 
-  let btnCir = new button(`#shapesBtn`, `button`, `btnCir1`, ``, ``, `Make a Circle`, ``,`Circle`);
+  let btnCir = new button(`#shapesBtn`, `button`, `btnCir1`, ``, ``, `Make a Circle`, ``, `Circle`);
+  btnCir.addBasic().addBtnBasic();
   let inputCir = new input(`#shapesBtn`, `input`, `inputCir1`, ``, ``, ``, `input size`, `input size`);
-  let btnTri = new button(`#shapesBtn`, `button`, `btnTri1`, ``, `hidden`, `Make a Triangle`, ``,`Triangle`);
+  inputCir.addBasic().addInputBasic();
+  let btnTri = new button(`#shapesBtn`, `button`, `btnTri1`, ``, `hidden`, `Make a Triangle`, ``, `Triangle`);
+  btnTri.addBasic().addBtnBasic();
   let inputTri = new input(`#shapesBtn`, `input`, `inputTri1`, ``, ``, ``, `input size`, `input size`);
-
-
-  inputZone.addBasic();
-
-  btnSquare.addBasic();
-  btnSquare.addBtnBasic();
-  inputSquare.addBasic();
-  inputSquare.addInputBasic();
-
-  btnRec.addBasic();
-  btnRec.addBtnBasic();
-  inputRecHeight.addBasic();
-  inputRecHeight.addInputBasic();
-
-  btnCir.addBasic();
-  btnCir.addBtnBasic();
-  inputCir.addBasic();
-  inputCir.addInputBasic();
-
-  btnTri.addBasic();
-  btnTri.addBtnBasic();
-  inputTri.addBasic();
-  inputTri.addInputBasic();
-
-  canvasZone.addBasic();
-  $(`#canvasInput`).height(`40em`).width(`40em`);
-
-  outputZone.addBasic();
-  $(`#canvasOutput`).height(`40em`).width(`16em`);
-
+  inputTri.addBasic().addInputBasic();
 
 })
