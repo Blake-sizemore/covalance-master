@@ -39,7 +39,7 @@ $(document).ready(function () {
       return this;
     }
   }
-  
+    
   let zone = new maker(zones, `div`, `main`);
   zone.add(` border border-primary`);
   let button = new maker(btns, `button`, `#dataInput`);
