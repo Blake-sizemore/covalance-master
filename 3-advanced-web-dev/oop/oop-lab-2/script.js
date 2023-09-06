@@ -7,7 +7,6 @@ $(document).ready(function () {
     $(`main div`).addClass(`dieHold row justify-content-center`);
     $(`main`).append('<div id="rr">')
     $(`main`).append(`<div id=sum></div>`);
-
     let diceGen = document.querySelector(`div.gen`);
     let rr = document.getElementById("rr");
     let sumBtn = document.getElementById("sum");
@@ -15,7 +14,6 @@ $(document).ready(function () {
     let diceArrayVal = [];
     let buttonDefine = `col col-4 btn bg-primary text-center borader boarder rounded-2 m-3`;
     let dieDefine = `die bg-light text-center borader boarder rounded-2 m-2`;
-
     class Die {
         constructor(add, search,) {
             this.add = add;
@@ -41,7 +39,6 @@ $(document).ready(function () {
             $(sumBtn).addClass(buttonDefine)
                 .text(`test for Sum - work in progress`).on(`click`, ()=>console.log(diceArrayVal))
         }
-
         roll() {
             return Math.floor(Math.random() * (6 - 1)) + 1;
         }
@@ -59,7 +56,6 @@ $(document).ready(function () {
         arrSplice() {
             let index = () => parseInt($(this.search).index());
             diceArrayVal.splice(index(), index());
-
         }
         remove() {
             $(this.search).remove();

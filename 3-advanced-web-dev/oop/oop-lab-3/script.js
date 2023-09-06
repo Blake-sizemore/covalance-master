@@ -22,12 +22,13 @@ $(document).ready(function () {
         $(this.appendWhere).append(`<${this.typeOf} id=${this.arrSet[count]}></${this.typeOf}>`);
         $(`#${this.arrSet[count]}`).addClass(`${this.eClass}`);
         if (`#${this.arrSet[count]}`.includes(`btn`)) {
+
           $(`#${this.arrSet[count]}`).attr(`type`, `submit`).text(`Make a ${this.arrText[count]}`).after(`<input 
             type="text" 
             class="col m-1 input" 
             name="detail${this.arrText[count]}" 
             id="input${this.arrText[count]}" 
-            placeholder="Enter a ${this.arrText[count]} size">`).on(`click`, ()=>console.log(`test`));
+            placeholder="Enter a ${this.arrText[count]} size">`).on(`click`, ()=>console.log(`test`)).before(content);
         }
         ++count;
       });
@@ -40,10 +41,13 @@ $(document).ready(function () {
   }
   
   let zone = new maker(zones, `div`, `main`);
-  zone.add(` border border-primary`, ``);
+  zone.add(` border border-primary`);
   let button = new maker(btns, `button`, `#dataInput`);
   button.add(`col col-2 btn btn-warning outline-success my-1 input`, shapes);
-  $(`.input`).wrapAll(`<form></form>`)
+  shapes.forEach((includes("")) => {
+    
+  });
+  $().wrapAll(`<form></form>`)
   $(`form`).addClass("row row-cols-4 justify-content-center");
   let canvas = new maker(``, ``, `#canvasOutput`);
   canvas.addSize(`50em`, `50em`);
