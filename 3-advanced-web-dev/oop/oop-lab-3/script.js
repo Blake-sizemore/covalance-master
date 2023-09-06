@@ -44,7 +44,7 @@ $(document).ready(function () {
   zone.add(` border border-primary`);
   let button = new maker(btns, `button`, `#dataInput`);
   button.add(`col col-2 btn btn-warning outline-success my-1 input`, shapes);
-  shapes.forEach((includes("")) => {
+  shapes.forEach(() => { 
     
   });
   $().wrapAll(`<form></form>`)
