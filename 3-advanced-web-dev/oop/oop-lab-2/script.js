@@ -43,7 +43,7 @@ $(document).ready(function () {
         }
 
         roll() {
-            return Math.floor(Math.random() * (6 - 1)) + 1;
+            return Math.floor(Math.random() * (6));
         }
         reRoll() {
             $(this.search).text(this.roll()).attr(`value`, $(this.search).text());
