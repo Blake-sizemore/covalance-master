@@ -1,0 +1,24 @@
+.square {
+    height: 5em;
+    width: 5em;
+}
+
+.circle {
+    border-radius: 100%;
+    height: 5em;
+    width: 5em;
+}
+
+.rectangle {
+    height: 5em;
+    width: 10em;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-top: 5em solid transparent;
+    border-bottom: 5em solid transparent;
+
+    border-left: 3em solid blue;
+}

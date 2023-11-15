@@ -41,14 +41,17 @@ $(document).ready(function () {
     addShape() {
       let selected = undefined;
       $(`button`).on(`click`, () => {
-        selected = $(event.currentTarget).attr(`id`), console.log(selected);
-        if (selected.includes(this.arrSet[0]||this.arrSet[1])||this.arrSet[2]||this.arrSet[3]){ $(`#canvasOutput`).append(`<div class="bg-primary">${selected}</div>`)
-          
-        }
+        selected = $(event.currentTarget).attr(`id`);
+        if ( selected == this.arrSet[0]) {console.log(`square test`, selected),$(`#canvasOutput`).append(`<div class="square bg-primary">square test</div>`);};
+        if ( selected == this.arrSet[2]) {console.log(`circle test`,selected),$(`#canvasOutput`).append(`<div class="circle bg-secondary">circle test</div>`);};
+        if ( selected == this.arrSet[1]) {console.log(`rectangle test`,selected),$(`#canvasOutput`).append(`<div class="rectangle bg-warning">rectangle test</div>`);};
+        if ( selected == this.arrSet[3]) {console.log(`triangle test`,selected),$(`#canvasOutput`).append(`<div class="triangle bg-success">triangle test</div>`);};
 
-      })
+      }
+      )
     }
   }
+  
   // Define Gen. Structure with edges
   let zone = new maker(zones, `div`, `main`);
   zone.add(`border border-primary`);
@@ -65,6 +68,7 @@ $(document).ready(function () {
   // Define Canvas space size
   let canvas = new maker(``, ``, `#canvasOutput`);
   canvas.addSize(`50em`, `50em`);
+  $(`#canvasOutput`).addClass("p-1");
 
   // Define Detail  space size
   let detail = new maker(``, ``, `#detailOutput`);
