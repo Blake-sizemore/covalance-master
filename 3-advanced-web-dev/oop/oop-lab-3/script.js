@@ -13,7 +13,10 @@ $(document).ready(function () {
       this.arrSet = arrSet;
       this.typeOf = typeOf;
       this.appendWhere = appendWhere;
+      console.log(this);
     }
+
+
     add(eClass, arrText) {
       let count = 0;
       this.eClass = eClass;
@@ -26,21 +29,22 @@ $(document).ready(function () {
             $(`#${this.arrSet[count]}`).addClass(`col-12 my-1`);
           }
           if (`#${this.arrSet[count]}`.includes(`canvas`)) {
-            $(`#${this.arrSet[count]}`).addClass(`row col-8 my-1`);
+            $(`#${this.arrSet[count]}`).addClass(`col-8`);
           }
           if (`#${this.arrSet[count]}`.includes(`detail`)) {
             let dCount = 0;
-            $(`#${this.arrSet[count]}`).addClass(`col-4 my-1`);
+            $(`#${this.arrSet[count]}`).addClass(`col-4`);
             details.forEach(() => {
-              $(`#detailOutput`).append(`<div class="bg-primary my-1">${details[dCount]}</div><div id="output${details[dCount]}" class="bg-secondary my-1">awaiting input</div>`);
+              $(`#detailOutput`).append(`<div class="bg-primary m-1" id="title${details[dCount]}">${details[dCount]}</div><div id="output${details[dCount]}" class="bg-secondary m-1"><span>awaiting input</span></div>`);
               ++dCount;
             })
           }
           if (`#${this.arrSet[count]}`.includes(`btn`)) {
-            $(`#${this.arrSet[count]}`).attr(`type`, `submit`).text(`Make a ${this.arrText[count]}`).after(`<input type="text" class="col m-1" name="detail${this.arrText[count]}" id="input${this.arrText[count]}" placeholder="Enter a ${this.arrText[count]} size">`);
+            let tally = 0;
+            $(`#${this.arrSet[count]}`).attr(`type`, `submit`).text(`Make a ${this.arrText[count]}`).after(`<input type="text" class="col m-1" name="${this.arrText[count]}" id="input${this.arrText[count]}" value="" placeholder="Enter a ${this.arrText[count]} size">`).on(`click`, () => { this.detailLoop(),++tally; });
+
           }
           else {
-            console.log(`else array without btn ${this.arrSet[count]}`);
           }
           ++count;
         });
@@ -50,31 +54,42 @@ $(document).ready(function () {
       }
       return this;
     }
-    addShape() {
-      let selected = undefined;
-      let shape,height,width,area,perimeter,radius = undefined;
-      
-      $(`button`).on(`click`, () => {
-        selected = $(event.currentTarget).attr(`id`);
-        if (selected == this.arrSet[0]) {
-          $(`#canvasOutput`).append(`<div class="square bg-primary" height="" width="">square test</div>`);
-          $(`#outputShape`).remove();
-        };
-        if (selected == this.arrSet[2]) {
-          $(`#canvasOutput`).append(`<div class="circle bg-secondary">circle test</div>`);
-        };
-        if (selected == this.arrSet[1]) {
-          $(`#canvasOutput`).append(`<div class="rectangle bg-warning">rectangle test</div>`);
-        };
-        if (selected == this.arrSet[3]) {
-          $(`#canvasOutput`).append(`<div class="triangle bg-success">triangle test</div>`);
-        };
-      })}
-    
-      arrPush() {
-        let shapeVal = undefined
-        shapeVal.push(parseInt($(this.search).attr(`value`)));
-    }  
+
+    detailLoop() {
+      let select = $(event.currentTarget).attr(`id`);
+      let inputVal = undefined;
+      let s;
+      $(`#canvasOutput`).append(`<div class="${select} bg-primary">${select} test</div>`);
+      details.forEach(() => {
+        $(`#outputShape`).remove();
+        $(`#titleShape`).after(`<div class="bg-success m-1" id="outputShape"><span>${select}</span></div>`);
+      });
+      if (select.includes('Square')){
+        s=shapes[0];
+        inputVal = document.getElementById(`input${s}`).value;
+      }
+      if (select.includes('Circle')){
+        s=shapes[2];
+      inputVal = document.getElementById(`input${s}`).value;
+      }
+      if (select.includes('Triangle')){
+        s=shapes[3];
+        inputVal = document.getElementById(`input${s}`).value;
+      }
+      if (select.includes('Rectangle')){
+        s=shapes[1];
+        inputVal = document.getElementById(`input${s}`).value;
+      }
+      console.log(inputVal);
+      console.log(select);
+
+    }
+
+    arrPush() {
+      let shapeVal = undefined
+      shapeVal.push(parseInt($(this.search).attr(`value`)));
+
+    }
   }
 
   // Define Gen. Structure with edges
@@ -94,7 +109,7 @@ $(document).ready(function () {
 
   // Define Main input zone
   let btnClick = new maker(btns, ``, `#canvasOutput`);
-  btnClick.addShape();
+  // btnClick.buttonClick();
   console.log(`Define form,buttons, and text boxes in inputZone`);
 
 });
