@@ -59,18 +59,14 @@ $(document).ready(function () {
       let select = $(event.currentTarget).attr(`id`);
       let inputVal = undefined;
       let s;
-      $(`#canvasOutput`).append(`<div class="${select} bg-primary">${select} test</div>`);
-      details.forEach(() => {
-        $(`#outputShape`).remove();
-        $(`#titleShape`).after(`<div class="bg-success m-1" id="outputShape"><span>${select}</span></div>`);
-      });
+      $(`#canvasOutput`).append(`<div class="${select}">${select} test</div>`);
       if (select.includes('Square')){
         s=shapes[0];
         inputVal = document.getElementById(`input${s}`).value;
       }
       if (select.includes('Circle')){
         s=shapes[2];
-      inputVal = document.getElementById(`input${s}`).value;
+        inputVal = document.getElementById(`input${s}`).value;
       }
       if (select.includes('Triangle')){
         s=shapes[3];
@@ -80,6 +76,10 @@ $(document).ready(function () {
         s=shapes[1];
         inputVal = document.getElementById(`input${s}`).value;
       }
+      details.forEach(() => {
+        $(`#outputShape`).remove();
+        $(`#titleShape`).after(`<div class="bg-success m-1" id="outputShape"><span>${select},${inputVal}</span></div>`);
+      });
       console.log(inputVal);
       console.log(select);
 
