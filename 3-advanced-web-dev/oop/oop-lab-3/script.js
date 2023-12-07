@@ -1,10 +1,11 @@
 $(document).ready(function () {
+  const MAX = 460;
   class layout {
     constructor() {
       this.div = document.createElement(`div`);
     }
     addDark() {
-      $(`body`).addClass(`container bg-dark p-0 border border-primary`);
+      $(`body`).addClass(`container bg-dark p-0`);
       $(`header`).addClass(`mt-3 mx-0`);
       $(`main`).addClass(`row justify-content-center m-0`);
       return this;
@@ -37,8 +38,8 @@ $(document).ready(function () {
       if (this.addButton.constructor === Array) {
         let btnCount = 0;
         this.addButton.forEach(() => {
-          $(this.addWhere).append(`<div id="${this.addButton[btnCount]}Grid" class='${this.set}'><div id="${this.addButton[btnCount]}" class='${this.butt}'>Make a ${this.addText[btnCount]}</div></div>`);
-          $(`#${this.addButton[btnCount]}`).attr(`type`, `submit`).after(`<input type="text" class="${this.input}" name="${this.addText[btnCount]}" id="input${this.addText[btnCount]}" value="" placeholder="Enter a ${this.addText[btnCount]} size">`);
+          $(this.addWhere).append(`<div id="${this.addButton[btnCount]}Grid" class='${this.set}'><button id="${this.addButton[btnCount]}" class='${this.butt}'>Make a ${this.addText[btnCount]}</button></div>`);
+          $(`#${this.addButton[btnCount]}`).on(`click`, () => { this.addClick(); }).attr(`type`, `submit`).after(`<input type="text" class="${this.input}" name="${this.addText[btnCount]}" id="${this.addText[btnCount]}" value="" placeholder="Enter a ${this.addText[btnCount]} size">`);
           ++btnCount;
         });
       } else {
@@ -63,83 +64,123 @@ $(document).ready(function () {
       }
       return this;
     }
+    addClick() {
+      insertShapes();
+      // let select = event.currentTarget.id;
+      // if (select.includes(`Square`)) {
+      //   insertShapes();
+      // }
+      // if (select.includes(`Circle`)) {
+      //   select = $(`#Circle`).val();
+      //   alert(`${select} Circle`);
+      // }
+      // if (select.includes(`Rectangle`)) {
+      //   select = $(`#Rectangle`).val();
+      //   alert(`${select} Rectangle`);
+      // }
+      // if (select.includes(`Triangle`)) {
+      //   select = $(`#Triangle`).val();
+      //   alert(`${select} Triangle`);
+      // }
+    }
   }
-  let zones = [ `canvasOutput`, `detailOutput`];
+
+  class square {
+    constructor(x, y, size) {
+      this.whereShape = document.getElementById(`canvasOutput`);
+      this.div = document.createElement('div');
+      this.size = size;
+      this.div.style.left = `${x}px`;
+      this.div.style.top = `${y}px`;
+      this.div.style.position = `absolute`;
+      this.whereShape.appendChild(this.div);
+      this.updateColor();
+      this.div.style.height = `${this.size}px`;
+      this.div.style.width = `${this.size}px`;
+      this.div.classList.add(`square`);
+
+    }
+    updateColor() {
+      let randomColor = `rgb(${randomValue(0, 255)} ,${randomValue(0, 255)},${randomValue(0, 255)})`;
+      this.div.style.backgroundColor = randomColor;
+    }
+  }
+
+  class rectangle extends square {
+    constructor(x, y, size) {
+      super(x, y, size)
+      this.div.style.width = `${this.size * 2}px`;
+      this.div.classList.remove(`square`)
+      this.div.classList.add(`rectangle`);
+    }
+  }
+
+  class circle extends square {
+    constructor(x, y, size) {
+      super(x, y, size)
+      this.div.classList.remove(`square`);
+      this.div.classList.add(`circle`);
+      this.div.classList.add(`rounded-circle`);
+    }
+  }
+
+  class triangle extends square {
+    constructor(x, y, size) {
+      super(x, y, size)
+      this.div.classList.remove(`square`)
+      this.div.classList.add(`triangle`);
+      this.div.style.borderTop = `5em solid transparent})`;
+      this.div.style.borderLeft = `5em solid transparent`;
+      this.div.style.borderRight = `5em solid  transparent`;
+      this.div.style.borderBottom = `10em solid rgb(${randomValue(0, 255)} ,${randomValue(0, 255)},${randomValue(0, 255)})`;
+    }
+  }
+
+  function randomValue(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+  }
+
+  function insertShapes() {
+    let selection = event.currentTarget.id;
+    let xVal = randomValue(0, MAX);
+    let yVal = randomValue(0, MAX);
+    if (selection.includes(`Square`)) {
+      sizeInput = $(`#Square`).val();
+      let sq = new square(yVal, xVal, sizeInput);
+    } else if (selection.includes(`Rectangle`)) {
+      sizeInput = $(`#Rectangle`).val();
+      let rec = new rectangle(yVal, xVal, sizeInput);
+    } else if (selection.includes(`Circle`)) {
+      sizeInput = $(`#Circle`).val();
+      let cir = new circle(yVal, xVal, sizeInput);
+    } else if (selection.includes(`Triangle`)) {
+      sizeInput = $(`#Triangle`).val();
+      let tri = new triangle(yVal, xVal, sizeInput);
+    }
+  }
+  let zones = [`canvasOutput`, `detailOutput`];
   let btns = [`btnSquare`, `btnRectangle`, `btnCircle`, `btnTriangle`];
   let shapes = [`Square`, `Rectangle`, `Circle`, `Triangle`];
   let details = [`Shape`, `Height`, `Width`, `Area`, `Perimeter`, `Radius`];
 
-
-
   let basicLayout = new layout();
   basicLayout.addDark()
-    .addStructure(`div`, zones, 'border border-primary', 'main')
-    .addStructure(`form`, `input`, `row row-cols-2 justify-content-center mb-3 mx-0 border border-primary`, `header`)
+    .addStructure(`div`, zones, '', 'main')
+    .addStructure(`form`, `input`, `row row-cols-2 justify-content-center mb-3 mx-0`, `header`)
     .addDetails(details, 'my-1', `#detailOutput`)
-    .addBtn(btns, shapes, `#input`,`row`,`col btn btn-warning align-middle my-1 mx-1`,`col align-middle my-1 mx-1` );
+    .addBtn(btns, shapes, `#input`, `row m-0 p-0`, `col btn btn-warning align-middle my-1 mx-1`, `col align-middle my-1 mx-1`)
 
-  $(`#canvasOutput`).addClass(`col-8 bg-white p-0`);
+
+  $('form').attr(`onSubmit`, `return false`);
+  $(`#canvasOutput`).addClass(`col-8 bg-white p-0`).attr(`position`, `relative`).height(`480px`);
   $('#detailOutput').addClass('col-4 p-0 ps-2');
 });
 
-// $(document).ready(function () {
-//   $(`body`).addClass(`container bg-dark`);
-// $(`header`).addClass(`row`);
-// $(`main`).addClass(`row justify-content-center`);
-
-// let shapes = [`Square`, `Rectangle`, `Circle`, `Triangle`];
-// let btns = [`btnSquare`, `btnRectangle`, `btnCircle`, `btnTriangle`];
-// let zones = [`dataInput`, `canvasOutput`, `detailOutput`];
-// let details = [`Shape`, `Height`, `Width`, `Area`, `Perimeter`, `Radius`];
-
-// class layout {
-//   constructor(arrSet, typeOf, appendWhere) {
-//     this.arrSet = arrSet;
-//     this.typeOf = typeOf;
-//     this.appendWhere = appendWhere;
-//     this.addEvent = btns.length - 1;
-//     // this.div = document.createElement(`div`);
-//   }
-
-//   add(eClass, arrText) {
-//     let count = 0;
-//     this.eClass = eClass;
-//     this.arrText = arrText;
-
-//     if (this.arrSet.constructor === Array) {
-//       this.arrSet.forEach(() => {
-//         $(this.appendWhere).append(`<${this.typeOf} id=${this.arrSet[count]}></${this.typeOf}>`);
-//         $(`#${this.arrSet[count]}`).addClass(`${this.eClass}`);
-//         if (`#${this.arrSet[count]}`.includes(`dataInput`)) {
-//           $(`#${this.arrSet[count]}`).addClass(`col-12 my-1`);
-//         }
-//         if (`#${this.arrSet[count]}`.includes(`canvas`)) {
-//           $(`#${this.arrSet[count]}`).addClass(`col-8`);
-//         }
-//         if (`#${this.arrSet[count]}`.includes(`detail`)) {
-//           let dCount = 0;
-//           $(`#${this.arrSet[count]}`).addClass(`col-4`);
-//           details.forEach(() => {
-//             $(`#detailOutput`).append(`<div class="bg-primary m-1" id="title${details[dCount]}">${details[dCount]}</div><div id="output${details[dCount]}" class="bg-secondary m-1"><span>awaiting input</span></div>`);
-//             ++dCount;
-//           })
-//         }
-//         if (`#${this.arrSet[count]}`.includes(`btn`)) {
-//           $(`#${this.arrSet[count]}`).attr(`type`, `submit`).text(`Make a ${this.arrText[count]}`).after(`<input type="text" class="col m-1" name="${this.arrText[count]}" id="input${this.arrText[count]}" value="" placeholder="Enter a ${this.arrText[count]} size">`);
-//         }
-//         ++count;
-//       });
-//     } else {
-//       $(this.appendWhere).append(`<${this.arrSet} id=${this.typeOf}></${this.arrSet}>`);
-//       ++count;
-//       console.log(`else`)
-//     }
-//     return this;
-//   }
 
 //   randomValue(){
 //         return Math.floor(Math.random()*(50-0)+0);
 //       }
+
 //   addClick() {
 //     btns.forEach(() => {
 //       let num = 1;
@@ -176,19 +217,5 @@ $(document).ready(function () {
 //     });
 //   }
 // }
-// // Define Gen. Structure with edges
-// let zone = new layout(zones, `div`, `main`);
-// zone.add(`border border-primary`);
-// console.log(`Define Gen. Structure with edges`);
-
-// // Define Main input zone
-// let inputForm = new layout(`form`, `formInput`, `#dataInput`);
-// inputForm.add();
-// console.log(`Define Main input zone`);
-
-// // Define form,buttons, and text boxes in inputZone
-// $(`#formInput`).attr('onsubmit', 'return false').addClass("row row-cols-4 justify-content-center");
-// let button = new layout(btns, `button`, `#formInput`);
-// button.add(`col col-2 btn btn-warning outline-success my-1 input`, shapes).addClick();
 
 // });
