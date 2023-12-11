@@ -1,5 +1,6 @@
 $(document).ready(function () {
   const MAX = 460;
+  const PI = 3.1459;
   class layout {
     constructor() {
       this.div = document.createElement(`div`);
@@ -66,22 +67,7 @@ $(document).ready(function () {
     }
     addClick() {
       insertShapes();
-      // let select = event.currentTarget.id;
-      // if (select.includes(`Square`)) {
-      //   insertShapes();
-      // }
-      // if (select.includes(`Circle`)) {
-      //   select = $(`#Circle`).val();
-      //   alert(`${select} Circle`);
-      // }
-      // if (select.includes(`Rectangle`)) {
-      //   select = $(`#Rectangle`).val();
-      //   alert(`${select} Rectangle`);
-      // }
-      // if (select.includes(`Triangle`)) {
-      //   select = $(`#Triangle`).val();
-      //   alert(`${select} Triangle`);
-      // }
+
     }
   }
 
@@ -94,24 +80,46 @@ $(document).ready(function () {
       this.div.style.top = `${y}px`;
       this.div.style.position = `absolute`;
       this.whereShape.appendChild(this.div);
-      this.updateColor();
+      this.div.style.backgroundColor = this.updateColor();
       this.div.style.height = `${this.size}px`;
       this.div.style.width = `${this.size}px`;
       this.div.classList.add(`square`);
+      this.changeDetails(`Square`, `${this.size}px`, `${this.size}px`, `${this.size * this.size}px`, `${this.size * 4}px`, `No Radius`);
 
     }
     updateColor() {
       let randomColor = `rgb(${randomValue(0, 255)} ,${randomValue(0, 255)},${randomValue(0, 255)})`;
-      this.div.style.backgroundColor = randomColor;
+      // this.div.style.backgroundColor = randomColor;
+      return randomColor
     }
+    changeDetails(shapeId, heightId, widthId, areaId, perimeterId, radiusId) {
+      let shape = document.getElementById(`detailShape`);
+      let height = document.getElementById(`detailHeight`);
+      let width = document.getElementById(`detailWidth`);
+      let area = document.getElementById(`detailArea`);
+      let perimeter = document.getElementById(`detailPerimeter`);
+      let radius = document.getElementById(`detailRadius`);
+
+      $(shape).text(shapeId);
+      $(height).text(heightId);
+      $(width).text(widthId);
+      $(area).text(areaId);
+      $(perimeter).text(perimeterId);
+      $(radius).text(radiusId);
+    }
+
+
   }
 
   class rectangle extends square {
     constructor(x, y, size) {
       super(x, y, size)
       this.div.style.width = `${this.size * 2}px`;
+      let recWidth = parseInt(this.div.style.width);
+      let recHeight = parseInt(this.size);
       this.div.classList.remove(`square`)
       this.div.classList.add(`rectangle`);
+      this.changeDetails(`Rectangle`, `${this.size}px`, `${this.size * 2}px`, `${this.size * this.size * 2}px`,`${[recWidth+recHeight]*2}px`,`No Radius`);
     }
   }
 
@@ -121,18 +129,21 @@ $(document).ready(function () {
       this.div.classList.remove(`square`);
       this.div.classList.add(`circle`);
       this.div.classList.add(`rounded-circle`);
+      this.changeDetails(`Circle`, `${this.size}px`, `${this.size}px`,`${PI*[[this.size/2]*[this.size/2]]}px`, `${PI*this.size}px`,`${this.size/2}px`);
     }
   }
 
   class triangle extends square {
     constructor(x, y, size) {
       super(x, y, size)
-      this.div.classList.remove(`square`)
+      let hypo= Math.sqrt(Math.pow(this.size,2)+Math.pow(this.size,2));
+      let base = this.size*2
+      this.div.classList.remove(`square`);
       this.div.classList.add(`triangle`);
-      this.div.style.borderTop = `5em solid transparent})`;
-      this.div.style.borderLeft = `5em solid transparent`;
-      this.div.style.borderRight = `5em solid  transparent`;
-      this.div.style.borderBottom = `10em solid rgb(${randomValue(0, 255)} ,${randomValue(0, 255)},${randomValue(0, 255)})`;
+      this.div.style.backgroundColor = `transparent`;
+      this.div.style.borderWidth = `${this.size}px`;
+      this.div.style.borderBottomColor = `rgb(${randomValue(0, 255)} ,${randomValue(0, 255)},${randomValue(0, 255)})`;
+      this.changeDetails(`Triangle`, `${this.size}`, `${base}`, `${[this.size*base]/2}`,`${hypo+hypo+base}px`,`No Radius`)
     }
   }
 
@@ -153,11 +164,13 @@ $(document).ready(function () {
     } else if (selection.includes(`Circle`)) {
       sizeInput = $(`#Circle`).val();
       let cir = new circle(yVal, xVal, sizeInput);
+      cir.changeDetails(`Circle`);
     } else if (selection.includes(`Triangle`)) {
       sizeInput = $(`#Triangle`).val();
       let tri = new triangle(yVal, xVal, sizeInput);
     }
   }
+
   let zones = [`canvasOutput`, `detailOutput`];
   let btns = [`btnSquare`, `btnRectangle`, `btnCircle`, `btnTriangle`];
   let shapes = [`Square`, `Rectangle`, `Circle`, `Triangle`];
@@ -175,47 +188,3 @@ $(document).ready(function () {
   $(`#canvasOutput`).addClass(`col-8 bg-white p-0`).attr(`position`, `relative`).height(`480px`);
   $('#detailOutput').addClass('col-4 p-0 ps-2');
 });
-
-
-//   randomValue(){
-//         return Math.floor(Math.random()*(50-0)+0);
-//       }
-
-//   addClick() {
-//     btns.forEach(() => {
-//       let num = 1;
-//       let selection = document.getElementById(`${btns[this.addEvent]}`);
-//       $(`#${btns[this.addEvent]}`).on(`click`, () => {
-//         this.div = document.createElement(`div`);
-//         this.div.style.left = this.randomValue();
-//         this.div.style.top = this.randomValue();
-
-//         if (selection.id == btns[0]) {
-//           $(`#canvasOutput`).append(this.div);
-//           $(this.div).addClass(`btnSquare`).attr(`id`,num+'square');
-//           ++num;
-//           console.log(this.div.style.left);
-//         }
-//         if (selection.id == btns[1]) {
-//           $(`#canvasOutput`).append(this.div);
-//           $(this.div).addClass(`btnRectangle`).attr(`id`,num+'rectangle');
-//           ++num;
-//         };
-//         if (selection.id == btns[2]) {
-//           $(`#canvasOutput`).append(this.div);
-//           $(this.div).addClass(`btnCircle`).attr(`id`,num+"circle");
-//           ++num;
-//         }
-//         if (selection.id == btns[3]) {
-//           $(`#canvasOutput`).append(this.div);
-//           $(this.div).addClass(`btnTriangle`).attr(`id`,num+"triangle");
-//           ++num;
-//         }
-//       });
-//       --this.addEvent;
-//       return this
-//     });
-//   }
-// }
-
-// });
