@@ -16,37 +16,59 @@ $(document).ready(function () {
         }
         addArrBtn(addWhere, addArr, element, element2, element3, addClass, addClass2, addClass3, addText1) {
             let count = 0;
+            let maxHeight = 500;
+            let maxWidth = 415;
+            let xVal = this.randomValue(0, maxWidth);
+            let yVal = this.randomValue(0, maxHeight);
+            let sizeInput = null;
+
             addArr.forEach(() => {
                 $(addWhere).append(`<${element} class="${addClass}" id="grid${addArr[count]}"><${element2} type="submit" id="btn${addArr[count]}" class="${addClass2}"><h5>${addText1} ${addArr[count]}</h5></${element2}><${element3} id="${element3}${addArr[count]}" class="${addClass3}" type="text" name="${addArr[count]}Value" value="" placeholder="Enter pixel sides"></${element3}></${element}>`);
 
-                if (element == `button`) {
-                    $(`${element}`).on(`click`, () => {
-                        console.log(`Clicked`)
-                    });
-                }
 
                 if (addArr[count] == `Rectangle`) {
                     $(`#inputRectangle`).after(`<input id="inputRectangle2" type="text" name="RectangleValueY" value="">`);
-                    $(`#gridRectangle`).removeClass(``);
-                    $(`#gridRectangle`).addClass(``);
                     $(`#inputRectangle2`).attr(`placeholder`, "Enter pixel height").addClass(`${addClass3}`);
                     $(`#inputRectangle`).attr(`placeholder`, "Enter pixel width");
+                    $(`#btnRectangle`).on(`click`, function (event) {
+                        event.preventDefault();
+                        let widthInput = $(`#inputRectangle`).val();
+                        let heightInput = $(`#inputRectangle2`).val();
+                        // let rec = new rectangle(yVal, xVal, widthInput, heightInput);
+                        console.log(`Rectangle`, widthInput, heightInput);
+                    });
                 }
                 if (addArr[count] == `Circle`) {
                     $(`#inputCircle`).attr(`placeholder`, "Enter pixel radius");
-                    $(`#gridCircle`).addClass(``)
+                    $(`#btnCircle`).on(`click`, function (event) {
+                        event.preventDefault();
+                        sizeInput = $(`#inputCircle`).val();
+                        // let cir = new circle(yVal, xVal, sizeInput);
+                        // cir.changeDetails(`Circle`);
+                        console.log(`Circle`, sizeInput);
+                    });
                 }
                 if (addArr[count] == `Triangle`) {
                     $(`#inputTriangle`).attr(`placeholder`, "Enter pixel height");
-                    $(`#gridTriangle`).addClass(``)
-
+                    $(`#btnTriangle`).on(`click`, function (event) {
+                        event.preventDefault();
+                        sizeInput = $(`#inputTriangle`).val();
+                        // let tri = new triangle(yVal, xVal, sizeInput);
+                        console.log(`Triangle`, sizeInput);
+                    });
                 }
                 if (addArr[count] == `Square`) {
                     $(`#inputSquare`).attr(`placeholder`, "Enter pixel height");
-                    $(`#gridSquare`).addClass(``)
+                    $(`#btnSquare`).on(`click`, function (event) {
+                        event.preventDefault();
+                        sizeInput = $(`#inputSquare`).val();
+                        let sq = new square(yVal, xVal, sizeInput);
+                        console.log(`Square`, sizeInput);
+                    });
                 }
                 ++count;
             })
+
             return this
         }
         addArrDetails(addWhere, addArr, element1, element2, element3, addClass1, addClass2, addClass3, addText1, addText2) {
@@ -56,6 +78,50 @@ $(document).ready(function () {
                 ++count;
             })
             return this
+        }
+        randomValue(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+        // 415
+    }
+
+    class square {
+        constructor(x, y, size) {
+
+            this.div = document.createElement('div');
+            this.whereShape = document.getElementById(`canvas`);
+            this.size = size;
+            this.div.style.left = `${x}px`;
+            this.div.style.top = `${y}px`;
+            this.div.style.position = `absolute`;
+            this.whereShape.appendChild(this.div);
+            this.div.style.backgroundColor = this.updateColor();
+            this.div.style.height = `${this.size}px`;
+            this.div.style.width = `${this.size}px`;
+            this.div.classList.add(`square`);
+            this.changeDetails(`Square`, `${this.size}px`, `${this.size}px`, `${this.size * this.size}px`, `${this.size * 4}px`, `No Radius`);
+        }
+        updateColor() {
+            let randomColor = `rgb(${this.randomValue(0, 255)} ,${this.randomValue(0, 255)},${this.randomValue(0, 255)})`;
+            return randomColor
+        }
+        changeDetails(shapeId, heightId, widthId, areaId, perimeterId, radiusId) {
+            let shape = document.getElementById(`outputShape`);
+            let height = document.getElementById(`outputHeight`);
+            let width = document.getElementById(`outputWidth`);
+            let area = document.getElementById(`outputArea`);
+            let perimeter = document.getElementById(`outputPerimeter`);
+            let radius = document.getElementById(`outputRadius`);
+
+            $(shape).text(shapeId);
+            $(height).text(heightId);
+            $(width).text(widthId);
+            $(area).text(areaId);
+            $(perimeter).text(perimeterId);
+            $(radius).text(radiusId);
+        }
+        randomValue(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
         }
     }
 
