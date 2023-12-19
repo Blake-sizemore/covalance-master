@@ -38,7 +38,7 @@ git commands:
         git init 
         git add . 
         git commit -m "" 
-        git remote add origin URL from git
+        git remote add origin "URL from git"
         git push -u origin master
 
     Following Pushes

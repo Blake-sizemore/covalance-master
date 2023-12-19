@@ -1,0 +1,197 @@
+Async is doing process out of order OR in the background while the rest of the processing can go on. Common use cases include AJAX, APIs and Server Chats
+
+    We can not create Async in javascript but we can use built in methods and classes to implement their features.
+
+    Parts of Async include callbacks, the improved Promise system, javascriptm and html. 
+
+    Lets focus on Promises as they are the primary feature for this.
+
+    A promise is a class that return an executor that holds resolve and reject as its argument.  You can customize how and what those two argument return.
+
+    resolved converts using .then();
+    rejected converts using .catch();
+
+    function slowEcho(message,delay){
+        let promise = new Promise(function (resolve, reject) {
+            setTimeout(()=>{
+                let random = Math.floor(Math.floor(Math.random()*10));
+                if ( random % 2 === 0) {
+                    resolve(message + even);
+                    } 
+                else { 
+                    let err = new Error(`something`);reject(err);
+                    },delay
+                });
+            }
+        )}
+
+    document.getElementById(`btn).addEventListener(`click`,()=>{
+        slowEcho(`Hello`,1000)
+        .then((a)=>{
+            console.log(a);
+        }).catch((e)=>{
+            console.log(`An error ocurred!`);
+            console.log(e);
+        });
+    });
+
+    Using return,.then(a'resolve'),.catch(b'reject')
+
+Shorthands for promise ( static method)
+
+    1.Create a promise that resolves with a value (.reject() and .resolve())
+        
+        IE:
+        let p = ne Promise((resolve,rejects)=>{
+            resolve(`hello`);
+        });
+
+        p.then((value)=> {
+            console.log(value);
+        })
+
+        SHORTER:
+        let p = Promise.resolve(`hello`);
+        let q = Promise.reject(new Error(`uhoh`));
+
+        p.then((value)=> {
+            console.log(value);
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+        q.then((value)=> {
+            console.log(value);
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+    2. Promise.all() Kick off multiply Promises and wait for them all to be completed
+
+        make slowEcho 3 times: Promise.all([arr0,arr1,arr2]); returns results as array
+        use the .then() as a breakapart point.
+        use array destructuring [result1,result2,result3] to make that easier
+
+        function slowEcho(message,delay){
+                let promise = new Promise(function (resolve, reject) {
+                    setTimeout(()=>{
+                        let random = Math.floor(Math.floor(Math.random()*10));
+                        if ( random % 2 === 0) {
+                            resolve(message + even);
+                            } 
+                        else { 
+                            let err = new Error(`something`);reject(err);
+                            },delay
+                        });
+                    }
+                )}
+
+            document.getElementById(`btn).addEventListener(`click`,()=>{
+                Promise.all([
+                    slowEcho(`i waited 1 second`,1000),
+                    slowEcho(`i waited 5 second`,5000),
+                    slowEcho(`i waited 10 second`,10000)
+                ]).then(([result1,result2,result3])=>{
+                    console.log(result1);
+                    })
+            });
+
+            console.log result = [i waited 1 second,i waited 5 second,i waited 10 second] - no destructor
+            console.log result = i waited 1 second - destructor
+            
+    3. Promise.race() - when ever the first one fulfills first is the result.
+
+Async/Await
+
+    this fixes the chaining issues with it large word library that comes with Promises
+    suspends the function properties of a async function using await
+
+    ShortHand:
+    async function foo() {
+        return Promise.resolve('bar');
+    }
+
+    async function bar() {
+    let val = await foo();
+        // do something with val
+        console.log(val);
+        // maybe even return a value here
+    }
+    Basic structure - resolve,reject
+        function slowEcho(message,delay){
+                let promise = new Promise(function (resolve, reject) {
+                    setTimeout(()=>{
+                        let random = 2;
+                        if ( random % 2 === 0) {
+                            resolve(message + even);
+                            } 
+                        else { 
+                            let err = new Error(`something`);reject(err);
+                            },delay
+                        });
+                    }
+                )}
+
+        document.getElementById(`btn`)
+        .addEventListener(`click`,async ()=>{
+            let someMessage = await slowEcho(`hello - 1sec`,1000);
+            console.log(someMessage);
+            someMessage = await slowEcho(`hello - 2sec`,2000);
+            console.log(someMessage);
+            someMessage = await slowEcho(`hello - 3sec`,3000);
+            console.log(someMessage);
+        });
+
+    Promise.all structure
+
+        document.getElementById(`btn`)
+        .addEventListener(`click`,async ()=>{
+            let [res1,res2,res3] = await Promises.all([
+                slowEcho(`Iamfirst`,1001),
+                slowEcho(`Iamsecond`,2001),
+                slowEcho(`Iamthird`,3001),
+            ]);
+            console.log(res1)
+        })
+
+    try-catch block - it prevents await code crashes
+
+        document.getElementById(`btn`)
+            .addEventListener(`click`,async ()=>{
+                try {
+                    let message = await slowEcho(`hello world`,1000);
+                    console.log(message);
+                } catch (e){
+                    console.log(e);
+                }
+            })
+    
+    global promise OK glocbal async OK, global await has no async so it does not work.
+
+        OK - 
+        slowEcho(`hello world`,1000)
+        .then()
+
+        async function getMess(){
+            let message = await slowEcho(`h`,1000);
+            console.log(message);
+        }
+
+        getMess();
+
+        NO GOOD - NO async means NO await
+        let message = await slowEcho(`blah`,0000)
+
+Fetch
+    fetch(`urlServerEndpoint`,) = a promise
+        .then((response)=>{
+            return response.json()
+        })
+        .then((data)=>{
+            data.forEach(data => {
+                $(`.row`).append(`
+                    --HTML--CODE-- React - Emmet
+                `)
+            })
+        })
+        .catch(e=>console.log(e.message))
