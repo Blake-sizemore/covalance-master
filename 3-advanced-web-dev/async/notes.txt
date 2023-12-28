@@ -42,7 +42,7 @@ Shorthands for promise ( static method)
     1.Create a promise that resolves with a value (.reject() and .resolve())
         
         IE:
-        let p = ne Promise((resolve,rejects)=>{
+        let p = new Promise((resolve,rejects)=>{
             resolve(`hello`);
         });
 
@@ -118,7 +118,9 @@ Async/Await
         // maybe even return a value here
     }
     Basic structure - resolve,reject
+
         function slowEcho(message,delay){
+            
                 let promise = new Promise(function (resolve, reject) {
                     setTimeout(()=>{
                         let random = 2;
