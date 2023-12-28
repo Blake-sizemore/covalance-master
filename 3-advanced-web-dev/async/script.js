@@ -1,112 +1,130 @@
 $(document).ready(function () {
-
-    // Timing out
-    // Create a function that takes a string message as an argument, and logs that message to the console
-    // Now call your function with a message
-    // Use setTimeout to call your function again, but with a different message and after 2 seconds
-    //     Hint: If you both of your messages log at the same time, look at the syntax of a setTimeout. You'll need to call your function within an anonymous function the timeOut executes.
-    // Create a new function called getWords that will attempt to do the following using several setTimeout calls:
-    //     Log a word instantly
-    //     After 3 seconds, log another word
-    //     2 seconds after that, log a third word
-    //     Finally 1 second after the third word, log a final word
-
-    function instantReturn(instant) {
-        return console.log(instant);
+    console.log(`Set-up:`);
+    console.log(`Complete. 1.Make sure all the html has loaded before using JavaScript
+Complete. 2.Create a new project folder and connect it to a github repository. Copy this README.md file into it.
+Complete. 3.Create an index.html file and an app.js file and link the two together.
+    
+Timing Out
+Complete. 1.Create a function that takes a string message as an argument, and logs that message to the console
+Complete. 2.Now call your function with a message`);
+    function stringArg(string, string2) {
+        console.log(string);
+        setTimeout(() => { console.log(string2); }, 2000);
     }
+    console.log(`2.Now call your function with a message`);
+    stringArg('my ' + 1 + 'st string', ` my changed string 2 seconds later`);
+    console.log(`Complete. 3.Use setTimeout to call your function again, but with a different message and after 2 seconds
+    Hint: If you both of your messages log at the same time, look at the syntax of a setTimeout. You'll need to call your function within an anonymous function the timeOut executes.`);
+    // stringArg(`my `+1+`st string`,`my changed string 2 seconds later`);
 
-    function echo(message, delay) {
-        return new Promise(function (resolve, reject) {
-            setTimeout(() => {
-                resolve(message);
-                let err = new Error(`something is not correct`);
-                reject(err);
-            }, delay)
-        });
+    console.log(`4. Create a new function called getWords that will attempt to do the following using several setTimeout calls:
+    Log a word instantly
+    After 3 seconds, log another word
+    2 seconds after that, log a third word
+    Finally 1 second after the third word, log a final word`);
+    async function getWord (string, string1,string2,string3) {
+        console.log(string);
+        setTimeout(() => { console.log(string1); }, 3000);
+        let twoSec = await setTimeout(() => { console.log(string2); }, 2000);
+        
+        setTimeout(() => { console.log(string3);}, 1000);
     };
 
-    let getWords = () => {
-        instantReturn(`This callback is instantReturn line 7, function declared on 3 through 5 and got logged instantly`);
-        echo(`hello 3000`, 3000)
-            .then((a) => {
-                console.log(a);
-                echo(`hello again 2000`, 2000)
-                    .then((a) => {
-                        console.log(a);
-                        echo(`hello again 1000`, 1000)
-                            .then((a) => {
-                                console.log(a);
-                            })
-                    }).catch((e) => {
-                        console.log(`An error ocurred!`);
-                        console.log(e);
-                    });
-            })
-    }
+    getWord(`instant`,`3 second wait`,`2 second wait`,`1 second wait`);
 
-    getWords();
+    console.log(`Callbacks and Recursion
+1.Create a function called done that logs Job's done! to the console
+2.Create a different function (on the global scope) called countdown that accepts two arguments, num and callback
+    The goal of this function will be to log a "countdown" from the number passed in as an argument, delayed by 1 second each time, and when it gets to 1, it should execute the callback argument
+    Hint: You'll need one setTimeout for this to work, an if/else statement, and NO for loop for this to work
+    Super Hint: You'll need to call countdown within itself, a concept called recursion
+    Mega Hint: There's a YouTube vid showing the concept off
+3.Call the countdown function and pass it two arguments: a number of seconds to countdown from and the done function and see if it works
+`);
+    console.log(`Promises Promises ;)
+1.Create a new global variable called lunchTime with a value of true
+2.Create a new function called orderMeSomeFood that returns a new Promise
+    Hint: If you're unsure of the correct syntax, check out this CodePen
+3.In the resolver function of the Promise, write logic to check if the lunchTime variable is true
+4.If lunchTime is true, create an object with two properties and values (key/value pairs) of your choice:
+    lunch: "your favorite lunch"
+    drink: "your favorite beverage"
+5.Resolve the Promise with your object
+6.If lunchTime is false, create a variable and set it equal to a new Error that has your own message
+    Hint: Check out this page on how to use a new Error
+7.Reject the Promise with your new Error
+8.Call your orderMeSomeFood function, chain you .then and don't forget your .catch
+9.If the promise within the function resolves, it should then log the object it resolved with
+10.Swap lunchTime to false, and then the promise should reject with your custom created error and be logged from you .catch
+11.Toggle lunchTime and check out the results of your newly created Promise function.
+`);
 
-    // Callbacks and Recursion
-    // Create a function called done that logs Job's done! to the console
-    // Create a different function (on the global scope) called countdown that accepts two arguments, num and callback
-    //     The goal of this function will be to log a "countdown" from the number passed in as an argument, delayed by 1 second each time, and when it gets to 1, it should execute the callback argument
+});
 
-    function done() {
-        console.log(`Job's Done`);
-    }
+// let resolveAfter2Seconds = () => {
+//     console.log('starting slow promise');
 
-    function countdown(num, callback) {
-        if (num > 0 && Number.isInteger(num)) {
-            console.log(num);
-            setTimeout(() => {
-                countdown(num - 1, callback)
-            }, 1000)
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(20);
+//             console.log('slow promise is done');
+//         }, 2000);
+//     });
+// };
 
-        } else {
-            callback();
-        }
-    }
+// let resolveAfter1Second = () => {
+//     console.log('starting fast promise');
 
-    countdown(3, done);
+//     return new Promise(resolve => {
+//         setTimeout(() => {
+//             resolve(10);
+//             console.log('fast promise is done');
+//         }, 1000);
+//     });
+// };
 
-    // Promise
-    // Create a new global variable called lunchTime with a value of true
-    // Create a new function called orderMeSomeFood that returns a new Promise
-    //     Hint: If you're unsure of the correct syntax, check out this CodePen
-    // In the resolver function of the Promise, write logic to check if the lunchTime variable is true
-    // If lunchTime is true, create an object with two properties and values (key/value pairs) of your choice:
-    //     lunch: "your favorite lunch"
-    //     drink: "your favorite beverage"
-    // Resolve the Promise with your object
-    // If lunchTime is false, create a variable and set it equal to a new Error that has your own message
-    //     Hint: Check out this page on how to use a new Error
-    // Reject the Promise with your new Error
-    // Call your orderMeSomeFood function, chain you .then and don't forget your .catch
-    // If the promise within the function resolves, it should then log the object it resolved with
-    // Swap lunchTime to false, and then the promise should reject with your custom created error and be logged from you .catch
-    // Toggle lunchTime and check out the results of your newly created Promise function.
+// let sequentialStart = async () => {
+//     console.log('==SEQUENTIAL START==');
 
-    let lunchTime = true;
+//     const slow = await resolveAfter2Seconds();
+//     // If the value of the expression following the await operator is not a Promise,
+//     // it's converted to a resolved Promise.
+//     const fast = await resolveAfter1Second();
 
-    function orderMeSomeFood() {
-        return new Promise((resolve, reject) => {
-            if (lunchTime == true) {
-                let object = {
-                    lunch: "Reuben Sandwhich",
-                    drink: "Water"
-                }
-                resolve(object.lunch);
-            } else {
-                let err = new Error(`something is not correct`);
-                reject(err);
-            }
-        });
-    };
+//     console.log(slow);
+//     console.log(fast);
+// }
 
-    orderMeSomeFood().then((a) => {
-            console.log(a);
-        }).catch((e) => {
-            console.log(e);
-        });
+// let concurrentStart = async () => {
+//     console.log('==CONCURRENT START with await==');
 
-    });
+//     const slow = resolveAfter2Seconds(); // starts timer immediately
+//     const fast = resolveAfter1Second();
+
+//     console.log(await slow);
+//     console.log(await fast); // waits for slow to finish, even though fast is already done!
+// }
+
+// let stillSerial = () => {
+//     console.log('==CONCURRENT START with Promise.all==');
+
+//     Promise.all([resolveAfter2Seconds(), resolveAfter1Second()]).then(([slow, fast]) => {
+//         console.log(slow);
+//         console.log(fast);
+//     });
+// }
+
+// let parallel = () => {
+//   console.log('==PARALLEL with Promise.then==');
+
+//   resolveAfter2Seconds().then((message) => console.log(message));
+//   resolveAfter1Second().then((message) => console.log(message));
+// }
+
+// sequentialStart(); // takes 2 + 1 seconds in total
+// // use setTimeout to wait above to finish
+// setTimeout(concurrentStart, 4000); // takes 2 seconds in total
+// wait longer
+// setTimeout(stillSerial, 7000); // same as before
+// // wait even longer
+// setTimeout(parallel, 10000); // truly parallelconsole.log("JavaScript is ready to run");

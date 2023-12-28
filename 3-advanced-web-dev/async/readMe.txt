@@ -3,6 +3,10 @@ Asynchronous Code Drills
 
 The purpose of this lab is to practice Asynchronous JavaScript concepts discussed in the video lectures. You'll want to feel comfortable writing your own functions that return new Promise objects, write setTimeout functions, and using .then()/.catch().
 Steps
+<<<<<<< HEAD
+=======
+
+>>>>>>> c9ad708e1c4f5e7a5adb227c58a53faaf81be4d7
 Setup
 
     Make sure all the html has loaded before using JavaScript
@@ -13,12 +17,18 @@ Timing Out
 
     Create a function that takes a string message as an argument, and logs that message to the console
     Now call your function with a message
+<<<<<<< HEAD
     
     Use setTimeout to call your function again, but with a different message and after 2 seconds
         Hint: If you both of your messages log at the same time, look at the syntax of a setTimeout. You'll need to call your function within an anonymous function the timeOut executes.
     
     Create a new function called getWords that will attempt to do the 
     following using several setTimeout calls:
+=======
+    Use setTimeout to call your function again, but with a different message and after 2 seconds
+        Hint: If you both of your messages log at the same time, look at the syntax of a setTimeout. You'll need to call your function within an anonymous function the timeOut executes.
+    Create a new function called getWords that will attempt to do the following using several setTimeout calls:
+>>>>>>> c9ad708e1c4f5e7a5adb227c58a53faaf81be4d7
         Log a word instantly
         After 3 seconds, log another word
         2 seconds after that, log a third word
@@ -34,7 +44,11 @@ Callbacks and Recursion
         Mega Hint: There's a YouTube vid showing the concept off
     Call the countdown function and pass it two arguments: a number of seconds to countdown from and the done function and see if it works
 
+<<<<<<< HEAD
 Promises Promises ;)
+=======
+Promises Promises
+>>>>>>> c9ad708e1c4f5e7a5adb227c58a53faaf81be4d7
 
     Create a new global variable called lunchTime with a value of true
     Create a new function called orderMeSomeFood that returns a new Promise
