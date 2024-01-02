@@ -51,3 +51,4 @@ git commands:
         git cat -
         git clone -
 
+    git push --set-upstream origin master

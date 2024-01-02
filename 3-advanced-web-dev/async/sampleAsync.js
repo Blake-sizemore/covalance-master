@@ -1,25 +1,25 @@
 
-// let resolveAfter2Seconds = () => {
-//     console.log('starting slow promise');
+let resolveAfter2Seconds = () => {
+    console.log('starting slow promise');
 
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             resolve(20);
-//             console.log('slow promise is done');
-//         }, 2000);
-//     });
-// };
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(20);
+            console.log('slow promise is done');
+        }, 2000);
+    });
+};
 
-// let resolveAfter1Second = () => {
-//     console.log('starting fast promise');
+let resolveAfter1Second = () => {
+    console.log('starting fast promise');
 
-//     return new Promise(resolve => {
-//         setTimeout(() => {
-//             resolve(10);
-//             console.log('fast promise is done');
-//         }, 1000);
-//     });
-// };
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(10);
+            console.log('fast promise is done');
+        }, 1000);
+    });
+};
 
 let sequentialStart = async () => {
     console.log('==SEQUENTIAL START==');

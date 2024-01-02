@@ -1,0 +1,109 @@
+Set up for working React interface
+
+    Node JS
+        install Node JS (nodejs.org) and use LTS to start
+        check versions with node -v, npx -v, and npm -v
+        do not forget about NVM
+    https://nodejs.org/en
+
+    React is a library built by Facebook to make development smoother and less backend heavy
+        inside of React is create-react-app library which we use here.
+        also check our Next.JS and Gatsby.js later on.
+    https://react.dev/ 
+
+    Backend/ UndertheHood  items:
+        Babel - Transpiler - you can write modern JavaScript code (ES6, ES7, and beyond!) that will be transpiled into JavaScript that older browsers can understand
+        WebPack - packager/bundler - write your code and components in separate files/modules, and import/export them as necessary
+
+    How to use and install create-react-app set-up.
+        using a  terminal navigate to said project folder.
+        use:
+            npx create-react-app "name"
+            cd "name"
+            npm start
+
+        Always remember to "npm start" inside of the created folder made by: 
+        npx create-react-app "name" action
+
+# Err log: 
+    New error -'react-scripts' is not recognized as an internal or external command, operable program or batch file.
+
+    Fix:
+    1. npm i -g react-scripts
+    2.  New error -> Error: Cannot find module 'react'
+    3. fix npm i react react-dom @types/react @types/react-dom
+    4. Working!
+ 
+# What is ReactJS
+    Open Source JS Library
+    A way of thinking in component base UI
+
+    what is a component:
+        a JavaScript Function that returns a JSX 
+        they are imported and exported.
+        saved js files
+        emmets are being used
+    
+    what is JSX : javescript eXtended
+        snytax sugar that looks like html.
+            JSX
+            <h1 className="name"> This is the way.</h1> 
+            == 
+            REACT
+            React.createElement('h1',{className:'name'},'this is the way');
+
+Parts and details of the boilerplate
+    node_modules 
+        - ALOT OF UNDER THE HOOD
+    public
+        manifest.js - remove
+        robot.txt - remove
+        2 x .png - remove
+        favicon.ico - remove
+        index.html - keep
+    .gitignore
+    src
+        App.js - remove
+        index.js - Need
+        AppTest.js
+        setupWebVitals.js
+        setupTest.js
+    
+        App.css
+        index.css
+
+        logo.svg
+    package-lock.json
+    package.json - instructional details for correct import/export usage (under the hood)
+    ReadMe.md - Provides terminal commads for create-react-app items
+
+Basic Rules for using JSX in javescript
+    1. use: 
+        import React from 'react'; ***
+            footnote: if you write your own you have to write this. if you use create-react-app or next-JS this is not required.
+            use it anyways for now.  ditch it later on once it is habit
+    2. if you are returning mutiply lines of JSX place them all inside of return ( );
+    3. You can only return ONE THING that means ONE Parent element, wrap them all up in a div
+        Welcome to Fragments or shadow DIV
+            React.Fragment - 2019 update
+            return (<><h1></h1></>)
+    4. in JS files make component names (const) with a CAPITAL LETTER
+
+Displaying on screen - See files in "src" -> index.js
+    import ReactDOM from 'react-dom'
+    import ReactDOM from 'react-dom/client';
+
+    const App = () => {
+        return (
+            <div>
+                <h1 className="creed">This is the way.</h1>
+                <h3>I’m a Mandalorian. Weapons are part of my religion.</h3>
+            </div>
+        );
+    };
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+
