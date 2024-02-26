@@ -1,0 +1,46 @@
+Boilerplate information:
+
+Concepts CRUD and MERN: 
+
+- CRUD - Create, Read, Update, and Delete/Destroy (serverside/datamanagment information)
+- MERN - MongoDB, Express.js, React, and Node.js (development toolkits for)
+
+
+Github link:
+https://github.com/covalence-io/ts-react-express-esbuild
+
+Git clone path:
+https://github.com/covalence-io/ts-react-express-esbuild.git
+
+cd into the folder
+
+"npm i" install all dependencies
+
+npm run dev
+
+Changing Remote depo url
+Nuke does not work need to remote
+use
+    git remote -v 
+to see the current location ( if covalnce.io it willnot work)
+
+How to change
+    get remote set-url origin (new git)
+
+how to remove
+    git remote remove origin
+
+git push -u origin
+
+how to remove the all change log on the git
+rm -rf git
+
+than recreate git repo entrily
+
+SSH and HTTPS:
+Your using https
+SSH is more secure and uses key
+
+full development imp:
+
+npm install mysql2

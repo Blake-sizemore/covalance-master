@@ -1,0 +1,24 @@
+node init
+        node init -y
+            this anwers all the questions with Yes
+    package name
+        deafult name == folder name
+    verison: 1.0
+    description: what thjis code does
+    entry point: main file
+    test: later
+    git repository: if you have it add it
+    key words: search term
+    author: name and or github repo 
+    license: open source an  limits ( ISC terms), use MIT
+
+All the above gets created in a package.json folder
+    npm run ??? -> looks in the scripts section for the designated ??? key
+    npm run pizza -> 
+
+    made a "start" script short hands to "node server/server.js"
+
+downloading data
+    fetch can be used
+    need to use fs and path
+    always use https

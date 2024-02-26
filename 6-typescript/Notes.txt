@@ -1,0 +1,164 @@
+typescript
+    super-set of javascript 
+    - gives advanced features on top of javascript
+    - runs as javascript (complied) 
+    - allows use of future javascript 
+    - adds strong types to js
+
+how to use:
+    install on cmd line(win),  not working in vscode yet
+        npm install typescript
+
+    run tsc "ts file.ts" to output the js code
+
+    Reviews and Checks ts code before converting ts to JS
+        will  prevent output 
+
+        use --watch??
+
+    Further typescript sample in playground
+
+        npm init
+        npm install jquery
+        npm install @types/jquery
+            - where most types are located under @type/ "package"
+        in cmd tsc --init
+            output tsconfig.json
+                needed to compile JS
+                added tsc call on file
+                    "files": ["hello.ts" ]
+                us tsc in cmd
+            tsc -w "watch our file 
+
+        in order to access JQ / bootstrap 
+        need to script links to index via min.js
+            <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+        Still use js as ts outputs the JS.    
+        <script src="hello.js"></script>
+
+    Bundler
+        Tool to bundle: Webpack is most used
+            pulls in all dependecies
+                webpack
+                webpack-cli
+                tsloader            
+        **npm i webpack webpack-cli ts-loader
+
+            Need webpack.config.js
+
+        if global install or on mac skip step
+        **npx webpack
+            -creates dist folder
+
+        re link in index through the dist/js/app.js in index.html
+            - link any packaged toolkits in .ts file
+                    -import $ from 'jquery'
+        
+    NEED webpack.congif.js to get dist folder made
+
+        Config file
+
+        Since version 4.0.0, webpack does not require a configuration file to bundle your project, nevertheless it is a good idea due to webpack's high level of configurability. A typical webpack.config.js may look like the following.  
+
+// ? CLASSES in TS
+    still have to set what the varible can recieve
+    
+    Inheritance
+    
+    Super and Overriding
+    
+    Public, Private,and protected, readonly setting 
+        - public (default) can set data sets reach able from any where 
+        - private can not be accessed form outside of the function or class
+        protected.
+        - readonly
+
+    Accessors
+        getters/setters as a way of intercepting accesses to a member of an object.
+        
+        Let's say we want to define an Employee class. We could choose to define it as:
+
+            class Employee {
+                fullName: string;
+            }
+
+            let employee = new Employee();
+
+            employee.fullName = 'Bob Smith';
+            console.log(employee.fullName);
+
+        However, it may be bad in certain cases to allow properties like fullName to be set whenever and wherever. We can instead use accessors:
+
+            class Employee {
+                private _fullName: string;
+
+                get fullName(): string {
+                    return this._fullName;
+                }
+
+                set fullName(newName: string) {
+                    if (requesterIsAllowedToDoThis) {
+                        this._fullName = newName;
+                    } else {
+                        console.log('Error: Unauthorized update of employee!');
+                    }
+                }
+            }
+
+            let employee = new Employee();
+
+            employee.fullName = 'Bob Smith';
+            console.log(employee.fullName);
+
+            Accessors with a get and no set are automatically inferred to be readonly.
+
+    static
+        those that are visible on the class itself rather than on the instances. In this example, we use static on the origin, as it's a general value for all grids. Each instance accesses this value through prepending the name of the class. Similarly to prepending this. in front of instance accesses, here we prepend Grid. in front of static accesses.
+
+            class Grid {
+                static origin = { x: 0, y: 0 };
+
+                calculateDistanceFromOrigin(point: { x: number; y: number; }) {
+                    let xDist = (point.x - Grid.origin.x);
+                    let yDist = (point.y - Grid.origin.y);
+
+                    return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+                }
+
+                constructor (public scale: number) { }
+            }
+
+                let grid1 = new Grid(1.0);  // 1x scale
+                let grid2 = new Grid(5.0);  // 5x scale
+
+                console.log(Grid.origin.x);
+                console.log(Grid.origin.y);
+                console.log(grid1.calculateDistanceFromOrigin({x: 10, y: 10}));
+                console.log(grid2.calculateDistanceFromOrigin({x: 10, y: 10}));
+
+
+    Abstract for classes:
+        limited use
+        use for frameworks and libraries
+            like react.component
+            can only be extended to a new class
+
+    Generic type ( Huge )
+        A major part of software engineering is building components that not only have well-defined and consistent APIs, but are also reusable.
+
+
+        function identity<T>(arg: T): T {
+            return arg;
+            }
+
+        <T> = type variable - it capture the type the user provides. This allows us to traffic that type information in one side of the function and out the other.
+
+
+        function identity(arg: enforce): enforce {
+            return arg;
+            }
+
+            function identity(arg: any,nnumber,string,boolean): any,nnumber,string {
+            return arg;
+            }

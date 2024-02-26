@@ -33,7 +33,6 @@ Install Git:
 
 git commands:
     
-    
     First Push for git:    
         git init 
         git add . 
@@ -45,10 +44,43 @@ git commands:
         git add .
         git commit -m ""
         git push
+    
+    What is the current linked repo
+        git remote -v
+    
+    What git has updated aka status
+        git status
+    
+    How to change the current linked repo
+        git remote set-url origin +URL
+
+    How to pull a repo onto your computer
+        git clone +URL
 
     Other Git items
         git pull - 
         git cat -
-        git clone -
+        
+        Check current remote: 
+            git remote -v
+        Set new remote: 
+            git remote set-url origin https://github.com/your-username/your-repo.git
+        Remove remote: 
+            git remote remove origin
+        Add remote later: 
+            git remote add origin https://github.com/your-username/your-repo.git
+        Push to new remote with upstream tracking: 
+            git push -u origin main
 
-    git push --set-upstream origin master
+        git push --set-upstream origin master
+
+Git Branches: 
+    Analogy: Timelines
+        Main Branch - Original Timeline
+            All coding as it is told
+
+        Dev Branch - alt timeline ( new )
+            same history but new history
+        
+        Unify the timelines once you make new features and fix bugs
+            Main + Dev =  New main with all dev history and updated coding allowing to rewrite a new timeline while dev can be worked along 

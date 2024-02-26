@@ -28,7 +28,7 @@ var person = {
     lastName:"Sizemore",
     birthYear:1990,
     birthMonth:"May",
-    birthDay:09,
+    birthDay:9,
     gender: "Male",
     livedPlaces:{
         birth:"GA",

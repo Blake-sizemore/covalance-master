@@ -1,0 +1,11 @@
+How to connect react and typescript
+    NEW
+        1. npx create-react-app my-react --tmeplate typescript
+    Existing - Bareabones boiler plate
+        https://github.com/covalence-io/barebones-react-typescript-express
+        0. clone / npm install all need depenecies
+
+        1. npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
+        2. change all .js to .tsx (with react) .ts (without react)
+            1. X = React 

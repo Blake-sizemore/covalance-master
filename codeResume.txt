@@ -1,0 +1,31 @@
+Code langauges,programs,enviorments,platforms,libraries:
+
+    # Enviorments/Platforms
+        -Windows
+        -Mac
+        
+    # Langauges
+        - Git
+        - HTML
+        - CSS
+            - SASS
+        - Javascript/with library
+        - React - UI
+        - MySQL
+
+    # Programs/Sites
+        - VScode https://code.visualstudio.com/
+        - Git hub https://github.com/
+    
+    # Libraries/Frameworks
+        - Bootstrap https://getbootstrap.com/ 
+        - React https://react.dev/ 
+        - Styled components - https://styled-components.com/
+        - Jquery - https://jquery.com/ 
+        - express.js - https://expressjs.com
+            -minimalist web framework for Node.js. It's unopinionated, flexible, and has become the standard server framework for Node.js.
+            -middleware and routing for API/serverside logic
+        - node.js-  https://nodejs.org/en
+        - CORS (Cross Origin Resource Sharing)  - https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+            - part of the WHATWG's Fetch Living Standard
+            - needed because ajax is not allowed by default because of the SOSP (same origin security policy)

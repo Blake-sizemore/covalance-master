@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     body.className = "bg-dark ";
 
     // create appendTo function
-    const createEappend = (element, idName, className, appendTo) => {
+    const createElement = (element, idName, className, appendTo) => {
         const e = document.createElement(element);
         e.className = className;
         appendTo.appendChild(e);

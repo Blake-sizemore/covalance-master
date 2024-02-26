@@ -1,0 +1,15 @@
+Github link:
+https://github.com/covalence-io/ts-react-express-esbuild
+
+Git clone path:
+https://github.com/covalence-io/ts-react-express-esbuild.git
+
+cd into the folder
+
+"npm i" install all dependencies
+
+Package lock
+
+SSH and HTTPS:
+Your using https
+SSH is more secure and uses key

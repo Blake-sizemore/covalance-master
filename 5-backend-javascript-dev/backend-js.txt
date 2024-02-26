@@ -1,0 +1,71 @@
+Node Js- 
+    runs javascript on the serverside
+        no need for ruby/.net on serverside
+        one langauge for both sides
+
+    Created Full-stack developer
+
+    USES V8 Engine for Chrome browser
+
+    Diagram: Read from bottom up normal
+
+        Chrome v8 ( base )
+        Node binding ( build for each OS ) - C++/C
+        Node Standard (   )
+        Express - Modules ( )
+
+    Express JS webserver
+
+    How to use:
+        Already installed
+        $ node file.js ( just type node )
+
+        $ node
+            > var test = 
+
+        Core Modules - basic use  ( more in low level that require more code )
+            Common: 
+                path - creates paths to files
+                url - parse/manupulate URL
+                http -  make Http request and listen on ports
+                fs - read and write files
+            
+            Using Modules:
+            var path = require('path');
+                path.extname(file.txt); return txt
+                path.dirname(images/sky.png  ) returns image
+
+                Require - pull puts and files/content into a var
+                
+                _dirname - 
+                .join
+
+                Import - 
+            
+            http - creates a webserver
+
+            Url - just like path but parse
+
+            
+            Security:
+                Browsers do not interact with serverside actions they just read and write
+                Node.js is ON the server and can cross into other servers.
+
+        NPM 
+            npm init
+                create package.json in current package
+                should exist in root folder
+                this auto install when 
+            
+            npm install request --save ( pushes all donwloads/changes to package.json )
+                no "--save" == external servers can use it
+
+            -g
+            does not add to package.json
+
+        Readline - do not use on final product
+            allows reading and use of console.log 
+            
+Working in Node:
+    type node in terminal and you enter a node work space
+    all javascript is test able in the terminal
